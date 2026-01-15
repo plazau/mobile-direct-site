@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mobile Direct | Premium Global Technology 2026</title>
-    
+
     <!-- External Libraries -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
+
+    <!-- IMPORTANT:
+         All image paths were changed from "/img/..." to "img/..."
+         so they work on GitHub Pages (repo subpath) AND on a custom domain.
+    -->
+
     <style>
         :root {
             --background: 220 20% 6%;
@@ -81,7 +86,7 @@
             border: 1px solid rgba(255,255,255,0.2);
             flex-shrink: 0;
         }
-        
+
         .thumb-btn {
             border: 2px solid transparent;
             transition: all 0.2s ease;
@@ -143,10 +148,10 @@
     <header class="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-xl border-b border-white/10">
         <div class="container mx-auto px-4 h-16 flex items-center justify-between">
             <div class="flex items-center gap-2">
-                <!-- LOGO (replaces SVG icon) -->
+                <!-- LOGO -->
                 <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shadow-lg overflow-hidden">
                     <img
-                        src="/img/logo1.png"
+                        src="img/logo1.png"
                         alt="Mobile Direct Logo"
                         class="w-full h-full object-contain p-1"
                     />
@@ -165,10 +170,10 @@
             </div>
 
             <button id="menu-toggle" class="md:hidden p-2 text-gray-400">
-                <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
             </button>
         </div>
-        
+
         <div id="mobile-menu" class="hidden md:hidden bg-zinc-900 border-b border-white/10 py-6 px-4 space-y-4 text-center">
             <a href="#products" class="block text-sm font-bold text-gray-300 uppercase tracking-widest">Inventory</a>
             <a href="#about" class="block text-sm font-bold text-gray-300 uppercase tracking-widest">About</a>
@@ -187,20 +192,27 @@
                     Mobile<br>
                     <span class="gradient-text">Direct</span>
                 </h1>
-Since 2019, we’ve focused on one idea: bringing devices from all over the world into your hands.
-As of 2026, we work through authorized distribution channels for Apple, Samsung, OPPO, HONOR, Xiaomi, Huawei, Google, OnePlus, Motorola, Sony, Nokia, and ASUS<p class="text-lg md:text-xl text-gray-400 max-w-xl leading-relaxed font-medium">
+
+                <!-- NOTE: You pasted this copy outside of a <p>. I left your text but wrapped it correctly. -->
+                <p class="text-gray-400 max-w-xl leading-relaxed font-medium">
+                    Since 2019, we’ve focused on one idea: bringing devices from all over the world into your hands.<br>
+                    As of 2026, we work through authorized distribution channels for Apple, Samsung, OPPO, HONOR, Xiaomi, Huawei, Google, OnePlus, Motorola, Sony, Nokia, and ASUS.
+                </p>
+
+                <p class="text-lg md:text-xl text-gray-400 max-w-xl leading-relaxed font-medium">
                     The World’s Market. Without Borders.
                 </p>
+
                 <div class="flex flex-col sm:flex-row gap-4">
                     <a href="#products" class="px-10 py-5 bg-white text-black rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-cyan-500 transition-all text-center shadow-xl">Explore Inventory</a>
                 </div>
             </div>
 
-            <!-- UPDATED HERO MEDIA (replaces floating phone) -->
+            <!-- UPDATED HERO MEDIA -->
             <div class="relative flex justify-center items-center w-full">
                 <div class="absolute inset-0 bg-cyan-500/5 blur-[120px] rounded-full scale-150"></div>
                 <div class="hero-media w-full max-w-2xl">
-                    <img src="/img/hero.jpg" alt="Mobile Direct Hero">
+                    <img src="img/hero.jpg" alt="Mobile Direct Hero">
                 </div>
             </div>
         </div>
@@ -212,7 +224,7 @@ As of 2026, we work through authorized distribution channels for Apple, Samsung,
             <div class="text-center mb-20 space-y-4">
                 <h2 class="text-4xl md:text-6xl font-black tracking-tighter uppercase text-balance text-white">Available <span class="gradient-text">Units</span></h2>
                 <p class="text-gray-500 max-w-2xl mx-auto text-[10px] uppercase font-black tracking-[0.5em]">High-Resolution Components & Support</p>
-                
+
                 <div class="flex flex-wrap justify-center gap-3 pt-12" id="filter-tabs">
                     <button data-cat="all" class="filter-btn px-8 py-3 rounded-2xl text-[10px] uppercase tracking-widest font-black bg-cyan-500 text-black shadow-lg">All</button>
                     <button data-cat="phones" class="filter-btn px-8 py-3 rounded-2xl text-[10px] uppercase tracking-widest font-black bg-white/5 border border-white/10 text-gray-400 hover:bg-white/10">Flagships</button>
@@ -232,10 +244,10 @@ As of 2026, we work through authorized distribution channels for Apple, Samsung,
     <footer id="about" class="py-24 bg-zinc-950 border-t border-white/5 relative overflow-hidden">
         <div class="container mx-auto px-6 text-center relative z-10">
             <div class="flex items-center justify-center gap-2 mb-8">
-                <!-- LOGO (replaces MD text block) -->
+                <!-- LOGO -->
                 <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shadow-lg overflow-hidden">
                     <img
-                        src="/img/logo1.png"
+                        src="img/logo1.png"
                         alt="Mobile Direct Logo"
                         class="w-full h-full object-contain p-1"
                     />
@@ -263,11 +275,11 @@ As of 2026, we work through authorized distribution channels for Apple, Samsung,
         <div class="absolute inset-0 bg-black/98 backdrop-blur-2xl" onclick="closeModal()"></div>
         <div class="relative glass-card max-w-6xl w-full max-h-[95vh] overflow-y-auto grid lg:grid-cols-2 shadow-2xl border-white/10" onclick="event.stopPropagation()">
             <img src="masterpiece.png" class="brand-stick-right top-10 opacity-[0.03]" alt="Brand Logo">
-            
+
             <button class="absolute top-8 right-8 z-20 p-3 bg-white/5 rounded-full hover:bg-white/10 transition-colors border border-white/5 text-white" onclick="closeModal()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
-            
+
             <div class="p-12 bg-white/[0.01] flex flex-col items-center justify-center border-r border-white/5 h-full min-h-[450px]">
                 <div class="w-full flex-grow flex items-center justify-center mb-10 relative">
                     <div class="w-full aspect-square bg-zinc-900 rounded-[3rem] flex items-center justify-center relative shadow-inner overflow-hidden border border-white/5">
@@ -299,7 +311,7 @@ As of 2026, we work through authorized distribution channels for Apple, Samsung,
                     </div>
                     <h2 id="modal-title" class="text-4xl font-black text-white leading-none tracking-tighter"></h2>
                 </div>
-                
+
                 <div id="modal-desc" class="space-y-4 text-gray-400 text-sm font-medium leading-relaxed border-l-2 border-cyan-500/20 pl-4 text-balance"></div>
 
                 <div class="flex items-center gap-6 py-8 border-y border-white/5">
@@ -367,7 +379,7 @@ As of 2026, we work through authorized distribution channels for Apple, Samsung,
               tag: "Preorder",
               payUrl: "https://checkout.revolut.com/pay/69c135c9-1326-4d6d-988e-1db086e1b61a",
               colors: ["#0f0f10"],
-              images: ["/img/samtri1.jpg", "/img/samtri2.jpg", "/img/samtri3.jpg"],
+              images: ["img/samtri1.jpg", "img/samtri2.jpg", "img/samtri3.jpg"],
               description: [
                 "Reserve Samsung’s first-ever tri-fold flagship — a device that transforms from a pocketable 6.5-inch phone into a 10.0-inch productivity tablet via a dual-hinge, inward-folding design.",
                 "Pre-ordering helps secure priority allocation from early regional batches and ensures you receive the latest firmware and setup guidance optimized for the tri-fold form factor.",
@@ -407,7 +419,7 @@ As of 2026, we work through authorized distribution channels for Apple, Samsung,
               tag: "Only 3 Left",
               payUrl: "https://checkout.revolut.com/pay/c76dcf35-b085-4f0c-bd48-d93102b5c369",
               colors: ["#000000", "#8b1e2d"],
-              images: ["/img/mate1.jpg", "/img/mate2.jpg", "/img/mate3.jpg"],
+              images: ["img/mate1.jpg", "img/mate2.jpg", "img/mate3.jpg"],
               description: [
                 "Pre-order Huawei’s tri-fold flagship, engineered to expand from a 6.4-inch phone into a 10.2-inch triple-screen tablet via a dual-hinge design.",
                 "Configured for premium multitasking with a flexible OLED panel that supports single, dual, and triple-screen modes.",
@@ -433,88 +445,88 @@ As of 2026, we work through authorized distribution channels for Apple, Samsung,
               }
             },
 
-            { 
+            {
                 id: 1, type: 'phones', name: "Xiaomi 17 Ultra Leica Edition", brand: "Xiaomi", price: 999, tag: "16/512GB",
                 payUrl: "https://checkout.revolut.com/pay/bfa544f7-eb49-45d6-8d96-aabb69db8235",
                 colors: ["#1e272e", "#ecf0f1"],
-                images: ["/img/17ultra3.jpg", "/img/17ultra2.jpg", "/img/17ultra1.jpg"],
+                images: ["img/17ultra3.jpg", "img/17ultra2.jpg", "img/17ultra1.jpg"],
                 description: ["The Xiaomi 17 Ultra Leica Edition represents the pinnacle of 2026 mobile photography, featuring a revolutionary 1-inch main sensor with a mechanical retractable Summilux lens system.", "Built with a Star-pattern ceramic unibody, it houses the TSMC-built Snapdragon 8 Elite architecture for unmatched efficiency and raw performance.", "The custom HyperOS 2.0 provides an orchestration layer for seamless device linking, while the ultra-bright 4500 nit panel ensures visibility in the harshest global sunlight."],
-                detailed: { "Processor": "Snapdragon 8 Elite (3nm TSMC)", "Memory": "16GB LPDDR5X-Ultra", "Storage": "512GB UFS 4.0 Pro", "Display": "6.8\" LTPO AMOLED 2K+", "Refresh": "1-144Hz Adaptive Sync", "Nits": "4500 Peak / 1600 Typical", "Main_Camera": "200MP Summilux Variable OIS", "Selfie": "32MP Under-Display Gen 5", "Battery": "5500mAh Solid-State Tech", "Charging": "120W Wired / 80W Wireless", "OS": "HyperOS 2.0 (Android 15)", "Build": "Aerospace Titanium / Ceramic" } 
+                detailed: { "Processor": "Snapdragon 8 Elite (3nm TSMC)", "Memory": "16GB LPDDR5X-Ultra", "Storage": "512GB UFS 4.0 Pro", "Display": "6.8\" LTPO AMOLED 2K+", "Refresh": "1-144Hz Adaptive Sync", "Nits": "4500 Peak / 1600 Typical", "Main_Camera": "200MP Summilux Variable OIS", "Selfie": "32MP Under-Display Gen 5", "Battery": "5500mAh Solid-State Tech", "Charging": "120W Wired / 80W Wireless", "OS": "HyperOS 2.0 (Android 15)", "Build": "Aerospace Titanium / Ceramic" }
             },
-            { 
+            {
                 id: 2, type: 'phones', name: "Oppo Find X8 Ultra", brand: "Oppo", price: 862, tag: "Pro 12/256GB",
                 payUrl: "https://checkout.revolut.com/pay/3c0a2668-9b57-4873-9e33-49e68e9dc61d",
                 colors: ["#2d3436", "#0984e3"],
-                images: ["/img/x8ultra1.jpg", "/img/x8ultra2.jpg", "/img/x8ultra3.jpg"],
+                images: ["img/x8ultra1.jpg", "img/x8ultra2.jpg", "img/x8ultra3.jpg"],
                 description: ["The Oppo Find X8 Ultra is a dual-periscope telephoto breakthrough, offering lossless optical zoom capabilities from 3x to 10x with zero detail degradation.", "Integrated Hasselblad Master calibration ensures every portrait and landscape features professional-grade color science and skin-tone accuracy.", "Protected by a Basalt-Fiber composite frame and IP69 rating, it is designed to operate in extreme humidity and high-pressure environments without failure."],
-                detailed: { "Processor": "Dimensity 9400 (3.63GHz)", "Memory": "12GB LPDDR5X", "Storage": "256GB UFS 4.0", "Display": "6.82\" 2K ProXDR LTPO", "Refresh": "1-120Hz Pro-Sync", "Nits": "4500 Max HDR", "Main_Camera": "50MP 1-inch Sony LYT-900", "Selfie": "32MP AF Ultra-Wide", "Battery": "5910mAh Glacier Battery", "Charging": "100W SUPERVOOC / 50W AIRVOOC", "OS": "ColorOS 15 (Global Edition)", "Biometrics": "Ultrasonic Dual-Finger" } 
+                detailed: { "Processor": "Dimensity 9400 (3.63GHz)", "Memory": "12GB LPDDR5X", "Storage": "256GB UFS 4.0", "Display": "6.82\" 2K ProXDR LTPO", "Refresh": "1-120Hz Pro-Sync", "Nits": "4500 Max HDR", "Main_Camera": "50MP 1-inch Sony LYT-900", "Selfie": "32MP AF Ultra-Wide", "Battery": "5910mAh Glacier Battery", "Charging": "100W SUPERVOOC / 50W AIRVOOC", "OS": "ColorOS 15 (Global Edition)", "Biometrics": "Ultrasonic Dual-Finger" }
             },
-            { 
+            {
                 id: 3, type: 'phones', name: "Vivo X200 Ultra", brand: "Vivo", price: 943, tag: "ZEISS 12/256GB",
                 payUrl: "https://checkout.revolut.com/pay/e456b7ac-b170-4cf1-925c-89984a8243bf",
                 colors: ["#1a1a1a", "#dfe6e9"],
-                images: ["/img/vivox2001.jpg", "/img/vivox2002.jpg", "/img/vivox2003.jpg"],
+                images: ["img/vivox2001.jpg", "img/vivox2002.jpg", "img/vivox2003.jpg"],
                 description: ["Vivo X200 Ultra redefines mobile clarity with its 200MP ZEISS APO periscope telephoto lens, designed for professional astronomical and distance photography.", "The custom V3+ imaging chip offloads complex visual tasks to a dedicated co-processor, enabling cinema-grade 4K low-light video with 10-bit depth.", "Featuring a semi-solid anode battery, the device provides consistent performance and high voltage output even in extreme sub-zero temperatures."],
-                detailed: { "Processor": "Dimensity 9400 Elite", "Memory": "12GB LPDDR5X", "Storage": "256GB UFS 4.0", "Display": "6.78\" 1.5K LTPO Eye-Care", "Refresh": "120Hz LTPO 4.0", "Nits": "4500 Peak Local", "Main_Camera": "50MP 1\" ZEISS T* OIS", "Selfie": "50MP Cinematic AF", "Battery": "6000mAh Semi-Solid", "Charging": "90W Flash / 30W Wireless", "OS": "OriginOS 5.0 (Android 15)", "Connectivity": "Global 5G / Wi-Fi 7" } 
+                detailed: { "Processor": "Dimensity 9400 Elite", "Memory": "12GB LPDDR5X", "Storage": "256GB UFS 4.0", "Display": "6.78\" 1.5K LTPO Eye-Care", "Refresh": "120Hz LTPO 4.0", "Nits": "4500 Peak Local", "Main_Camera": "50MP 1\" ZEISS T* OIS", "Selfie": "50MP Cinematic AF", "Battery": "6000mAh Semi-Solid", "Charging": "90W Flash / 30W Wireless", "OS": "OriginOS 5.0 (Android 15)", "Connectivity": "Global 5G / Wi-Fi 7" }
             },
-            { 
+            {
                 id: 4, type: 'phones', name: "Honor Magic 8 Pro", brand: "Honor", price: 1584, tag: "Global 512GB",
                 payUrl: "https://checkout.revolut.com/pay/fdfd8e4e-fa03-4a27-b0d4910057679",
                 colors: ["#1a1a1a", "#00d2d3"],
-                images: ["/img/hm81.jpg", "/img/hm82.jpg", "/img/hm83.jpg"],
+                images: ["img/hm81.jpg", "img/hm82.jpg", "img/hm83.jpg"],
                 description: ["The Honor Magic 8 Pro is a flagship for the intelligence age, featuring a native on-device Large Language Model (LLM) for real-time task automation.", "Equipped with Gen-3 silicon-carbon battery technology, it provides the industry's highest energy density for multi-day usage in a slim 8.2mm profile.", "Full Google Play Services support and global band compatibility make this the definitive choice for the international high-end market."],
-                detailed: { "Processor": "Snapdragon 8 Elite (3nm)", "Memory": "16GB LPDDR5X", "Storage": "512GB UFS 4.0", "Display": "Quad-Curved LTPO OLED", "Refresh": "1-120Hz Adaptive", "Nits": "5000 nits HDR Peak", "Main_Camera": "50MP Falcon OIS 2.0", "Selfie": "50MP + 3D Depth", "Battery": "5850mAh Silicon-Carbon", "Charging": "100W Wired / 66W Wireless", "OS": "MagicOS 9.0 (Global GMS)", "Security": "3D Structured Light" } 
+                detailed: { "Processor": "Snapdragon 8 Elite (3nm)", "Memory": "16GB LPDDR5X", "Storage": "512GB UFS 4.0", "Display": "Quad-Curved LTPO OLED", "Refresh": "1-120Hz Adaptive", "Nits": "5000 nits HDR Peak", "Main_Camera": "50MP Falcon OIS 2.0", "Selfie": "50MP + 3D Depth", "Battery": "5850mAh Silicon-Carbon", "Charging": "100W Wired / 66W Wireless", "OS": "MagicOS 9.0 (Global GMS)", "Security": "3D Structured Light" }
             },
 
-            { 
+            {
                 id: 6, type: 'phones', name: "Huawei Pura 80 Ultra", brand: "Huawei", price: 1254, tag: "Innovation",
                 payUrl: "https://checkout.revolut.com/pay/58d15710-1baa-465a-803a-2a4b8330151f",
                 colors: ["#d63031", "#1a1a1a"],
-                images: ["/img/pura80u1.jpg", "/img/pura80u2.jpg", "/img/pura80u3.jpg"],
+                images: ["img/pura80u1.jpg", "img/pura80u2.jpg", "img/pura80u3.jpg"],
                 description: ["A mechanical marvel in your pocket. The Huawei Pura 80 Ultra features a physical retractable 1-inch Summilux lens system for optical purity.", "Running on the fully native HarmonyOS NEXT microkernel, it offers enterprise-tier performance with zero legacy Android overhead for total stability.", "Integrated Beidou satellite hardware enables two-way voice calls and real-time SMS messaging without cellular towers or Wi-Fi connectivity."],
-                detailed: { "Processor": "Kirin 9100 (5nm Stack)", "Memory": "16GB LPDDR5X", "Storage": "512GB", "Display": "6.8\" Kunlun LTPO OLED", "Refresh": "1-120Hz Adaptive", "Nits": "3000 Max Peak", "Main_Camera": "1\" 50MP RYYB Retractable", "Selfie": "13MP High-Res AF", "Battery": "5200mAh Dual-Cell", "Charging": "100W Wired / 80W Wireless", "OS": "HarmonyOS NEXT 5.0", "Build": "Basalt Armor / Star-Leather" } 
+                detailed: { "Processor": "Kirin 9100 (5nm Stack)", "Memory": "16GB LPDDR5X", "Storage": "512GB", "Display": "6.8\" Kunlun LTPO OLED", "Refresh": "1-120Hz Adaptive", "Nits": "3000 Max Peak", "Main_Camera": "1\" 50MP RYYB Retractable", "Selfie": "13MP High-Res AF", "Battery": "5200mAh Dual-Cell", "Charging": "100W Wired / 80W Wireless", "OS": "HarmonyOS NEXT 5.0", "Build": "Basalt Armor / Star-Leather" }
             },
-            { 
+            {
                 id: 10, type: 'phones', name: "POCO F8 Ultra", brand: "POCO", price: 680, tag: "Value Beast",
                 payUrl: "https://checkout.revolut.com/pay/b2b1b60d-efe5-486a-8c96-6e990211d0c6",
                 colors: ["#f39c12", "#1a1a1a"],
-                images: ["/img/pocof8u1.jpg", "/img/pocof8u2.jpg", "/img/pocof8u3.jpg"],
+                images: ["img/pocof8u1.jpg", "img/pocof8u2.jpg", "img/pocof8u3.jpg"],
                 description: ["POCO F8 Ultra is a hardware disruptor, delivering flagship-tier benchmark scores at nearly half the cost of competing premium devices.", "The 1.5K C8 AMOLED panel provides professional-grade color accuracy and high refresh rates, optimized for speed-obsessed tech enthusiasts.", "Featuring the raw power of the Snapdragon 8 Elite, this device is built for heavy multi-tasking, app development, and intensive mobile usage."],
-                detailed: { "Processor": "Snapdragon 8 Elite", "Memory": "12GB LPDDR5X", "Storage": "256GB UFS 4.0", "Display": "6.67\" C8 AMOLED 1.5K", "Refresh": "144Hz Adaptive Sync", "Nits": "4000 Peak Max", "Main_Camera": "200MP HP2 High-Res", "Selfie": "20MP 4K Support", "Battery": "5000mAh Graphite Anode", "Charging": "120W HyperCharge", "OS": "HyperOS POCO (Global)", "Protection": "IP68 Certified" } 
+                detailed: { "Processor": "Snapdragon 8 Elite", "Memory": "12GB LPDDR5X", "Storage": "256GB UFS 4.0", "Display": "6.67\" C8 AMOLED 1.5K", "Refresh": "144Hz Adaptive Sync", "Nits": "4000 Peak Max", "Main_Camera": "200MP HP2 High-Res", "Selfie": "20MP 4K Support", "Battery": "5000mAh Graphite Anode", "Charging": "120W HyperCharge", "OS": "HyperOS POCO (Global)", "Protection": "IP68 Certified" }
             },
 
-            { 
+            {
                 id: 15, type: 'watches', name: "Huawei Watch GT 6 Pro", brand: "Huawei", price: 365, tag: "Premium Golf",
                 payUrl: "https://checkout.revolut.com/pay/7ebea866-26b2-4748-b0a0-2c7017ff8417",
                 colors: ["#2c3e50", "#95a5a6"],
-                images: ["/img/gt6pro1.jpg", "/img/gt6pro2.jpg", "/img/gt6pro3.jpg"],
+                images: ["img/gt6pro1.jpg", "img/gt6pro2.jpg", "img/gt6pro3.jpg"],
                 description: ["Engineered for elite professional performance. Includes high-resolution 3D maps for over 30,000 global golf courses with wind metrics.", "Certified for technical free-diving up to 40 meters, the Pro provides real-time depth and decompression alerts directly on the sapphire crystal.", "Wrapped in nanocrystalline ceramic and titanium, it is a masterclass in durability that survives the world's most extreme professional environments."],
-                detailed: { "Chip": "Kirin A2 High-Freq", "RAM": "2GB Pro", "Storage": "16GB Media Hub", "Display": "1.5\" LTPO AMOLED", "Glass": "Sapphire Crystal 2.0", "Bezel": "Nano-Ceramic Polish", "Dive": "40m Free-Dive Cert", "Golf": "30k+ Global 3D Maps", "Battery": "14 Days Endurance", "GPS": "Dual-Band GNSS Pro", "OS": "HarmonyOS NEXT Hub", "NFC": "Global Secure Payments" } 
+                detailed: { "Chip": "Kirin A2 High-Freq", "RAM": "2GB Pro", "Storage": "16GB Media Hub", "Display": "1.5\" LTPO AMOLED", "Glass": "Sapphire Crystal 2.0", "Bezel": "Nano-Ceramic Polish", "Dive": "40m Free-Dive Cert", "Golf": "30k+ Global 3D Maps", "Battery": "14 Days Endurance", "GPS": "Dual-Band GNSS Pro", "OS": "HarmonyOS NEXT Hub", "NFC": "Global Secure Payments" }
             },
-            { 
+            {
                 id: 16, type: 'watches', name: "Huawei Watch Fit 4", brand: "Huawei", price: 209, tag: "Fashion Tech",
                 payUrl: "https://checkout.revolut.com/pay/6f9b79c6-4d94-4dee-b0d8-01ba2575fa91",
                 colors: ["#8e44ad", "#e91e63"],
-                images: ["/img/hwfit4pro1.jpg", "/img/hwfit4pro2.jpg", "/img/hwfit4pro3.jpg"],
+                images: ["img/hwfit4pro1.jpg", "img/hwfit4pro2.jpg", "img/hwfit4pro3.jpg"],
                 description: ["The fashion-forward technology benchmark. An ultra-slim profile housing a high-resolution rectangular AMOLED display for sleek usage.", "Tracks stress cycles, sleep depth, and heart rate 24/7 with the latest TruSeen 5.5+ sensors in a profile that weighs only 26g.", "Designed for comfort and utility, it features quick messaging support and custom animated fitness guides for the active city professional."],
-                detailed: { "Chip": "ARM Cortex M4 Ultra", "RAM": "512MB RAM", "Storage": "4GB EMMC Flash", "Display": "1.82\" AMOLED Pro-HD", "Brightness": "1500 nits Peak", "Weight": "26g (Body Only)", "Battery": "10 Days Mixed Use", "Pulse": "TruSeen 5.5+ Active", "Water": "5 ATM / IP68 Rating", "Strap": "Easy-Click Swappable", "OS": "HarmonyOS 4.0", "Fitness": "100+ Pro Modes" } 
+                detailed: { "Chip": "ARM Cortex M4 Ultra", "RAM": "512MB RAM", "Storage": "4GB EMMC Flash", "Display": "1.82\" AMOLED Pro-HD", "Brightness": "1500 nits Peak", "Weight": "26g (Body Only)", "Battery": "10 Days Mixed Use", "Pulse": "TruSeen 5.5+ Active", "Water": "5 ATM / IP68 Rating", "Strap": "Easy-Click Swappable", "OS": "HarmonyOS 4.0", "Fitness": "100+ Pro Modes" }
             },
-            { 
+            {
                 id: 19, type: 'watches', name: "Honor Watch 5 Ultra", brand: "Honor", price: 314, tag: "Survival",
                 payUrl: "https://checkout.revolut.com/pay/3fa23bfb-12cf-4818-82c0-0cc7f3a8f015",
                 colors: ["#1e272e", "#f39c12"],
-                images: ["/img/hwatch5u1.jpg", "/img/hwatch5u2.jpg", "/img/hwatch5u3.jpg"],
+                images: ["img/hwatch5u1.jpg", "img/hwatch5u2.jpg", "img/hwatch5u3.jpg"],
                 description: ["Built for survival in the world's most extreme environments. Features offline topographic maps and dead-reckoning GPS navigation.", "Equipped with a one-touch emergency satellite SOS link for signaling rescue when outside of cellular and Wi-Fi data range.", "Constructed from 316L surgical steel with an impact-resistant frame, it is built to survive high-G shock and extreme thermal cycling."],
-                detailed: { "Chip": "Honor Wearable SoC", "RAM": "1GB RAM", "Storage": "16GB Topo Flash", "Display": "1.5\" 2500nit AMOLED", "Durability": "MIL-STD-810G Impact", "Water": "10 ATM (100m)", "Maps": "Global Offline Topo", "SOS": "Satellite Emergency", "Battery": "14 Days Smart Mode", "Navigation": "Dead-Reckoning Pro", "OS": "MagicOS Watch", "Sensors": "Baro / Alt / Compass" } 
+                detailed: { "Chip": "Honor Wearable SoC", "RAM": "1GB RAM", "Storage": "16GB Topo Flash", "Display": "1.5\" 2500nit AMOLED", "Durability": "MIL-STD-810G Impact", "Water": "10 ATM (100m)", "Maps": "Global Offline Topo", "SOS": "Satellite Emergency", "Battery": "14 Days Smart Mode", "Navigation": "Dead-Reckoning Pro", "OS": "MagicOS Watch", "Sensors": "Baro / Alt / Compass" }
             },
 
-            { 
+            {
                 id: 21, type: 'tablets', name: "RedMagic Astra", brand: "RedMagic", price: 680, tag: "Pro Gaming",
                 payUrl: "https://checkout.revolut.com/pay/ccc38531-5bc6-4f9a-adbc-94d44e8b0024",
                 colors: ["#1a1a1a", "#c0392b"],
-                images: ["/img/astra3.jpg", "/img/astra2.jpg", "/img/astra1.jpg"],
+                images: ["img/astra3.jpg", "img/astra2.jpg", "img/astra1.jpg"],
                 description: ["Zero compromise gaming. The world's only tablet with an integrated active turbo fan for peak cooling.", "The 165Hz ultra-high refresh rate 2.8K display is tuned specifically for esports, offering zero-latency touch response.", "Equipped with quad DTS:X Ultra speakers, it provides cinematic directional audio for a competitive edge in mobile shooters."],
-                detailed: { "Processor": "Snapdragon 8 Gen 3", "RAM": "16GB LPDDR5X", "Storage": "512GB UFS 4.0", "Display": "10.9\" 2.8K IPS", "Refresh": "165Hz Pro Gaming", "Touch": "840Hz Sampling Rate", "Cooling": "Active Turbo Fan", "Battery": "10,100mAh", "Charging": "80W Wired Fast", "Audio": "Quad Speakers DTS:X", "Network": "Wi-Fi 7 / BT 5.4", "OS": "RedMagic OS 10" } 
+                detailed: { "Processor": "Snapdragon 8 Gen 3", "RAM": "16GB LPDDR5X", "Storage": "512GB UFS 4.0", "Display": "10.9\" 2.8K IPS", "Refresh": "165Hz Pro Gaming", "Touch": "840Hz Sampling Rate", "Cooling": "Active Turbo Fan", "Battery": "10,100mAh", "Charging": "80W Wired Fast", "Audio": "Quad Speakers DTS:X", "Network": "Wi-Fi 7 / BT 5.4", "OS": "RedMagic OS 10" }
             }
         ];
 
@@ -525,13 +537,13 @@ As of 2026, we work through authorized distribution channels for Apple, Samsung,
         function renderProducts(cat = 'all') {
             grid.innerHTML = '';
             const filtered = cat === 'all' ? products : products.filter(p => p.type === cat);
-            
+
             filtered.forEach(p => {
                 const procShort = (p.detailed?.Processor || p.detailed?.Chip || "Elite Core").split(' ')[0];
                 const batShort = (p.detailed?.Battery || "Pro Power").split(' ')[0];
                 const displayType = (p.detailed?.Display || "Retina").split(' ')[0];
                 const isPreorder = p.tag.toLowerCase() === 'preorder';
-                
+
                 const imageSrc = (p.images && p.images.length > 0) ? p.images[0] : "imagehere1.jpg";
 
                 grid.innerHTML += `
