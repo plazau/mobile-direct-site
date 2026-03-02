@@ -4,16 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mobile Direct | Premium Global Technology 2026</title>
-
+    
     <!-- External Libraries -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    <!-- IMPORTANT:
-         All image paths were changed from "/img/..." to "img/..."
-         so they work on GitHub Pages (repo subpath) AND on a custom domain.
-    -->
-
+    
     <style>
         :root {
             --background: 220 20% 6%;
@@ -86,7 +81,7 @@
             border: 1px solid rgba(255,255,255,0.2);
             flex-shrink: 0;
         }
-
+        
         .thumb-btn {
             border: 2px solid transparent;
             transition: all 0.2s ease;
@@ -96,15 +91,6 @@
             box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
         }
 
-        .brand-stick-right {
-            position: absolute;
-            right: -5%;
-            width: 40%;
-            opacity: 0.1;
-            pointer-events: none;
-            user-select: none;
-        }
-
         .product-img {
             width: 100%;
             height: 100%;
@@ -112,7 +98,6 @@
             transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* HERO IMAGE (responsive) */
         .hero-media {
             width: 100%;
             height: clamp(260px, 45vh, 520px);
@@ -144,19 +129,20 @@
 </head>
 <body class="antialiased">
 
+    <!-- Global Currency Bar -->
+    <div class="bg-cyan-600/10 border-b border-cyan-500/20 py-2 text-center relative z-[60]">
+        <p class="text-[9px] font-black uppercase tracking-[0.4em] text-cyan-400">
+            NOTICE: All payments are securely processed in <span class="text-white">Romanian Leu (RON)</span> at a fixed rate of 1 USD = 4.29 RON
+        </p>
+    </div>
+
     <!-- Header -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-xl border-b border-white/10">
+    <header class="fixed top-9 left-0 right-0 z-50 bg-black/50 backdrop-blur-xl border-b border-white/10">
         <div class="container mx-auto px-4 h-16 flex items-center justify-between">
             <div class="flex items-center gap-2">
-                <!-- LOGO -->
                 <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shadow-lg overflow-hidden">
-                    <img
-                        src="img/logo1.png"
-                        alt="Mobile Direct Logo"
-                        class="w-full h-full object-contain p-1"
-                    />
+                    <img src="/img/logo1.png" alt="Mobile Direct Logo" class="w-full h-full object-contain p-1" onerror="this.src='https://placehold.co/40x40/000/FFF?text=MD'">
                 </div>
-
                 <span class="text-xl font-bold gradient-text tracking-tighter uppercase">Mobile Direct</span>
             </div>
 
@@ -173,7 +159,7 @@
                 <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
             </button>
         </div>
-
+        
         <div id="mobile-menu" class="hidden md:hidden bg-zinc-900 border-b border-white/10 py-6 px-4 space-y-4 text-center">
             <a href="#products" class="block text-sm font-bold text-gray-300 uppercase tracking-widest">Inventory</a>
             <a href="#about" class="block text-sm font-bold text-gray-300 uppercase tracking-widest">About</a>
@@ -181,38 +167,28 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="relative min-h-[85vh] flex items-center justify-center pt-20 overflow-hidden bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-zinc-900 via-background to-background">
-
+    <section class="relative min-h-[85vh] flex items-center justify-center pt-28 overflow-hidden bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-zinc-900 via-background to-background">
         <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
             <div class="space-y-8 animate-slide-up">
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[10px] text-gray-400 font-black uppercase tracking-[0.3em]">
-                    <span class="text-cyan-400">⚡</span> Our 2026 Collection is Live
+                    <span class="text-cyan-400">⚡</span> Global Checkout Processed in RON
                 </div>
                 <h1 class="text-5xl md:text-7xl lg:text-8xl font-black leading-none tracking-tighter text-white">
                     Mobile<br>
                     <span class="gradient-text">Direct</span>
                 </h1>
-
-                <!-- NOTE: You pasted this copy outside of a <p>. I left your text but wrapped it correctly. -->
-                <p class="text-gray-400 max-w-xl leading-relaxed font-medium">
-                    Since 2019, we’ve focused on one idea: bringing devices from all over the world into your hands.<br>
-                    As of 2026, we work through authorized distribution channels for Apple, Samsung, OPPO, HONOR, Xiaomi, Huawei, Google, OnePlus, Motorola, Sony, Nokia, and ASUS.<br>**UPDATE** We are still in the process of porting everything to our new site. If you need a product that has not been uploaded yet, please reach out via whatsapp **
-                </p>
-
                 <p class="text-lg md:text-xl text-gray-400 max-w-xl leading-relaxed font-medium">
-                    The World’s Market. Without Borders.
+                    The World’s Market. Without Borders. Since 2019.
                 </p>
-
                 <div class="flex flex-col sm:flex-row gap-4">
                     <a href="#products" class="px-10 py-5 bg-white text-black rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-cyan-500 transition-all text-center shadow-xl">Explore Inventory</a>
                 </div>
             </div>
 
-            <!-- UPDATED HERO MEDIA -->
             <div class="relative flex justify-center items-center w-full">
                 <div class="absolute inset-0 bg-cyan-500/5 blur-[120px] rounded-full scale-150"></div>
                 <div class="hero-media w-full max-w-2xl">
-                    <img src="img/hero.jpg" alt="Mobile Direct Hero">
+                    <img src="/img/hero.jpg" alt="Mobile Direct Hero" onerror="this.src='https://placehold.co/800x600/111/444?text=Mobile+Direct+2026'">
                 </div>
             </div>
         </div>
@@ -223,14 +199,13 @@
         <div class="container mx-auto px-6">
             <div class="text-center mb-20 space-y-4">
                 <h2 class="text-4xl md:text-6xl font-black tracking-tighter uppercase text-balance text-white">Available <span class="gradient-text">Units</span></h2>
-                <p class="text-gray-500 max-w-2xl mx-auto text-[10px] uppercase font-black tracking-[0.5em]">High-Resolution Components & Support</p>
-
+                <p class="text-gray-500 max-w-2xl mx-auto text-[10px] uppercase font-black tracking-[0.5em]">Secure Checkout • 1 USD ≈ 4.29 RON</p>
+                
                 <div class="flex flex-wrap justify-center gap-3 pt-12" id="filter-tabs">
                     <button data-cat="all" class="filter-btn px-8 py-3 rounded-2xl text-[10px] uppercase tracking-widest font-black bg-cyan-500 text-black shadow-lg">All</button>
                     <button data-cat="phones" class="filter-btn px-8 py-3 rounded-2xl text-[10px] uppercase tracking-widest font-black bg-white/5 border border-white/10 text-gray-400 hover:bg-white/10">Flagships</button>
                     <button data-cat="watches" class="filter-btn px-8 py-3 rounded-2xl text-[10px] uppercase tracking-widest font-black bg-white/5 border border-white/10 text-gray-400 hover:bg-white/10">Wearables</button>
                     <button data-cat="tablets" class="filter-btn px-8 py-3 rounded-2xl text-[10px] uppercase tracking-widest font-black bg-white/5 border border-white/10 text-gray-400 hover:bg-white/10">Tablets</button>
-                    <button data-cat="tech" class="filter-btn px-8 py-3 rounded-2xl text-[10px] uppercase tracking-widest font-black bg-white/5 border border-white/10 text-gray-400 hover:bg-white/10">AR / VR</button>
                 </div>
             </div>
 
@@ -240,32 +215,26 @@
         </div>
     </section>
 
-    <!-- Footer / About -->
+    <!-- Footer -->
     <footer id="about" class="py-24 bg-zinc-950 border-t border-white/5 relative overflow-hidden">
         <div class="container mx-auto px-6 text-center relative z-10">
             <div class="flex items-center justify-center gap-2 mb-8">
-                <!-- LOGO -->
                 <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shadow-lg overflow-hidden">
-                    <img
-                        src="img/logo1.png"
-                        alt="Mobile Direct Logo"
-                        class="w-full h-full object-contain p-1"
-                    />
+                    <img src="/img/logo1.png" alt="Mobile Direct Logo" class="w-full h-full object-contain p-1" onerror="this.src='https://placehold.co/40x40/000/FFF?text=MD'">
                 </div>
-
                 <span class="text-2xl font-bold gradient-text uppercase tracking-tight">Mobile Direct</span>
             </div>
             <div class="max-w-2xl mx-auto space-y-6 mb-12 text-center">
                 <div class="glass-card p-8 border-cyan-500/20">
-                    <h4 class="text-xs font-black uppercase text-cyan-400 tracking-[0.4em] mb-4">Warranty & Support</h4>
+                    <h4 class="text-xs font-black uppercase text-cyan-400 tracking-[0.4em] mb-4">Secure Transactions</h4>
                     <p class="text-gray-300 text-sm font-medium leading-relaxed">
-                        If something happens to your device and you need warranty repaired, we process all that for you. We act as your direct liaison with manufacturers to ensure seamless service and maintenance for all premium hardware.
+                        We have integrated <strong>Viva.com</strong> for enterprise-grade payment processing. 
+                        Please note: To comply with local financial regulations, your transaction will be processed in <strong>Romanian Leu (RON)</strong> at a fixed exchange rate of 1 USD = 4.29 RON.
                     </p>
                 </div>
-                <p class="text-gray-500 text-[10px] font-bold uppercase tracking-widest">If you have a device we do not carry, we are more than happy to get it for you. </p>
             </div>
             <div class="pt-10 border-t border-white/5 text-gray-600 text-[9px] font-black uppercase tracking-[0.4em]">
-                © 2019-2026 Mobile Direct. The World’s Market. Without Borders.
+                © 2019-2026 Mobile Direct. Verified Viva.com Merchant.
             </div>
         </div>
     </footer>
@@ -274,31 +243,29 @@
     <div id="product-modal" class="fixed inset-0 z-[100] flex items-center justify-center px-4 hidden-modal">
         <div class="absolute inset-0 bg-black/98 backdrop-blur-2xl" onclick="closeModal()"></div>
         <div class="relative glass-card max-w-6xl w-full max-h-[95vh] overflow-y-auto grid lg:grid-cols-2 shadow-2xl border-white/10" onclick="event.stopPropagation()">
-            <img src="masterpiece.png" class="brand-stick-right top-10 opacity-[0.03]" alt="Brand Logo">
-
             <button class="absolute top-8 right-8 z-20 p-3 bg-white/5 rounded-full hover:bg-white/10 transition-colors border border-white/5 text-white" onclick="closeModal()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" x2="6" x2="6" y2="18"/><line x1="6" x2="6" x2="18" y2="18"/></svg>
             </button>
-
+            
             <div class="p-12 bg-white/[0.01] flex flex-col items-center justify-center border-r border-white/5 h-full min-h-[450px]">
                 <div class="w-full flex-grow flex items-center justify-center mb-10 relative">
                     <div class="w-full aspect-square bg-zinc-900 rounded-[3rem] flex items-center justify-center relative shadow-inner overflow-hidden border border-white/5">
-                         <img id="modal-main-img" class="product-img" src="imagehere1.jpg" alt="Hardware Perspective">
+                         <img id="modal-main-img" class="product-img" src="" alt="Product view">
                          <div class="absolute bottom-6 left-1/2 -translate-x-1/2 px-4 py-1 bg-black/60 backdrop-blur-md rounded-full text-[8px] font-black uppercase text-gray-400 tracking-widest border border-white/10">
-                            Perspective <span id="current-view">1</span>
+                            View <span id="current-view">1</span>
                          </div>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-3 gap-3 w-full max-w-[320px]">
-                    <button id="thumb-1" onclick="setView(1)" class="thumb-btn active aspect-square bg-zinc-800 rounded-2xl border-white/10 flex items-center justify-center text-[9px] font-black text-gray-500 uppercase tracking-widest overflow-hidden">
-                        <img src="imagehere1.jpg" class="w-full h-full object-cover opacity-50">
+                    <button id="thumb-1" onclick="setView(1)" class="thumb-btn active aspect-square bg-zinc-800 rounded-2xl border-white/10 flex items-center justify-center overflow-hidden">
+                        <img src="" class="w-full h-full object-cover opacity-50">
                     </button>
-                    <button id="thumb-2" onclick="setView(2)" class="thumb-btn aspect-square bg-zinc-800 rounded-2xl border-white/10 flex items-center justify-center text-[9px] font-black text-gray-500 uppercase tracking-widest overflow-hidden">
-                        <img src="imagehere2.jpg" class="w-full h-full object-cover opacity-50">
+                    <button id="thumb-2" onclick="setView(2)" class="thumb-btn aspect-square bg-zinc-800 rounded-2xl border-white/10 flex items-center justify-center overflow-hidden">
+                        <img src="" class="w-full h-full object-cover opacity-50">
                     </button>
-                    <button id="thumb-3" onclick="setView(3)" class="thumb-btn aspect-square bg-zinc-800 rounded-2xl border-white/10 flex items-center justify-center text-[9px] font-black text-gray-500 uppercase tracking-widest overflow-hidden">
-                        <img src="imagehere3.jpg" class="w-full h-full object-cover opacity-50">
+                    <button id="thumb-3" onclick="setView(3)" class="thumb-btn aspect-square bg-zinc-800 rounded-2xl border-white/10 flex items-center justify-center overflow-hidden">
+                        <img src="" class="w-full h-full object-cover opacity-50">
                     </button>
                 </div>
             </div>
@@ -311,222 +278,187 @@
                     </div>
                     <h2 id="modal-title" class="text-4xl font-black text-white leading-none tracking-tighter"></h2>
                 </div>
-
-                <div id="modal-desc" class="space-y-4 text-gray-400 text-sm font-medium leading-relaxed border-l-2 border-cyan-500/20 pl-4 text-balance"></div>
+                
+                <div id="modal-desc" class="space-y-4 text-gray-400 text-sm font-medium leading-relaxed border-l-2 border-cyan-500/20 pl-4"></div>
 
                 <div class="flex items-center gap-6 py-8 border-y border-white/5">
-                    <span id="modal-price" class="text-5xl price-text text-white tracking-tighter"></span>
                     <div class="flex flex-col">
-                        <span id="modal-stock-status" class="text-[10px] font-black text-green-500 uppercase tracking-widest flex items-center gap-2">
-                             <span class="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_10px_#22c55e]"></span> In Stock
-                        </span>
-                        <span class="text-[9px] text-gray-500 font-bold uppercase tracking-widest">Insured Priority Shipping</span>
+                        <span id="modal-price" class="text-5xl price-text text-white tracking-tighter"></span>
+                        <span id="modal-price-ron" class="text-sm font-bold text-gray-500 uppercase tracking-widest mt-1"></span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span id="modal-stock-status" class="text-[10px] font-black text-green-500 uppercase tracking-widest flex items-center gap-2"></span>
+                        <span class="text-[9px] text-gray-500 font-bold uppercase tracking-widest">Final Amount in RON</span>
                     </div>
                 </div>
 
                 <div class="space-y-6">
                     <div class="flex items-center gap-3">
-                        <h4 class="text-[10px] font-black text-gray-500 uppercase tracking-[0.4em] whitespace-nowrap">Technical Matrix</h4>
+                        <h4 class="text-[10px] font-black text-gray-500 uppercase tracking-[0.4em]">Specifications</h4>
                         <div class="h-px flex-1 bg-white/5"></div>
                     </div>
                     <div id="modal-specs" class="grid grid-cols-2 gap-x-6 gap-y-4"></div>
+                    <div class="p-4 bg-white/5 rounded-xl border border-white/10">
+                        <p class="text-[9px] font-black text-gray-500 uppercase tracking-[0.2em] leading-relaxed">
+                            <span class="text-cyan-500">Notice:</span> 
+                            Payments are processed via Viva.com in local currency (RON). 
+                            Total checkout will be calculated at a fixed rate of 4.29.
+                        </p>
+                    </div>
                 </div>
 
                 <div class="pt-8">
                     <a id="buy-now-link" href="#" target="_blank" class="w-full py-6 bg-white text-black rounded-[2rem] font-black text-xs uppercase tracking-[0.3em] hover:bg-cyan-500 transition-all hover:scale-[1.01] shadow-2xl flex items-center justify-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-                        BUY NOW
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M2 12h20" stroke-linecap="round"/></svg>
+                        SECURE CHECKOUT (RON)
                     </a>
                 </div>
             </div>
         </div>
     </div>
 
-<!-- WhatsApp Floating Button -->
-<a
-  href="https://wa.me/40728957884"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="Reach out via WhatsApp"
-  class="fixed bottom-6 right-6 z-[999] group flex items-center gap-3"
->
-  <!-- Label (hidden on small screens) -->
-  <span class="hidden sm:inline-flex px-4 py-2 rounded-2xl bg-black/70 backdrop-blur-xl border border-white/10 text-[10px] font-black uppercase tracking-[0.3em] text-gray-200 shadow-2xl group-hover:border-cyan-500/30 group-hover:text-white transition-all">
-    Reach out via WhatsApp
-  </span>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/40728957884" target="_blank" class="fixed bottom-6 right-6 z-[999] group flex items-center gap-3">
+        <span class="hidden sm:inline-flex px-4 py-2 rounded-2xl bg-black/70 backdrop-blur-xl border border-white/10 text-[10px] font-black uppercase tracking-[0.3em] text-gray-200 shadow-2xl group-hover:border-cyan-500/30 transition-all">Support Desk</span>
+        <span class="w-14 h-14 rounded-2xl bg-emerald-500 flex items-center justify-center shadow-2xl border border-white/10 group-hover:scale-[1.04] transition-transform">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="26" height="26" fill="#fff"><path d="M16 2.5C8.55 2.5 2.5 8.55 2.5 16c0 2.63.76 5.18 2.2 7.38L3.5 29.5l6.32-1.17A13.44 13.44 0 0 0 16 29.5c7.45 0 13.5-6.05 13.5-13.5S23.45 2.5 16 2.5Z" opacity="0.2"/><path d="M16 6.3c-5.36 0-9.7 4.34-9.7 9.7 0 1.9.55 3.75 1.6 5.33l-1.04 3.77 3.86-1.01A9.64 9.64 0 0 0 16 25.7c5.36 0 9.7-4.34 9.7-9.7S21.36 6.3 16 6.3Zm5.66 13.35c-.24.67-1.18 1.23-1.95 1.39-.52.11-1.19.2-3.46-.75-2.9-1.21-4.76-4.18-4.9-4.38-.13-.2-1.17-1.56-1.17-2.98 0-1.42.74-2.12 1.01-2.41.27-.28.6-.35.8-.35h.58c.18 0 .43-.07.67.51.24.58.81 2 .88 2.15.07.15.11.33.02.53-.09.2-.13.33-.27.51-.13.18-.28.4-.4.54-.13.15-.26.31-.11.58.15.27.66 1.08 1.42 1.75.98.87 1.81 1.14 2.08 1.27.27.13.43.11.59-.07.16-.18.67-.78.85-1.05.18-.27.35-.22.59-.13.24.09 1.53.72 1.79.85.26.13.43.2.49.31.07.11.07.64-.18 1.31Z"/></svg>
+        </span>
+    </a>
 
-  <!-- Button -->
-  <span class="w-14 h-14 rounded-2xl bg-emerald-500 flex items-center justify-center shadow-2xl border border-white/10 group-hover:scale-[1.04] transition-transform">
-    <!-- WhatsApp Icon -->
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="26" height="26" fill="none">
-      <path fill="#0B0F14" opacity="0.18" d="M16 2.5C8.55 2.5 2.5 8.55 2.5 16c0 2.63.76 5.18 2.2 7.38L3.5 29.5l6.32-1.17A13.44 13.44 0 0 0 16 29.5c7.45 0 13.5-6.05 13.5-13.5S23.45 2.5 16 2.5Z"/>
-      <path fill="#ffffff" d="M16 6.3c-5.36 0-9.7 4.34-9.7 9.7 0 1.9.55 3.75 1.6 5.33l-1.04 3.77 3.86-1.01A9.64 9.64 0 0 0 16 25.7c5.36 0 9.7-4.34 9.7-9.7S21.36 6.3 16 6.3Zm5.66 13.35c-.24.67-1.18 1.23-1.95 1.39-.52.11-1.19.2-3.46-.75-2.9-1.21-4.76-4.18-4.9-4.38-.13-.2-1.17-1.56-1.17-2.98 0-1.42.74-2.12 1.01-2.41.27-.28.6-.35.8-.35h.58c.18 0 .43-.07.67.51.24.58.81 2 .88 2.15.07.15.11.33.02.53-.09.2-.13.33-.27.51-.13.18-.28.4-.4.54-.13.15-.26.31-.11.58.15.27.66 1.08 1.42 1.75.98.87 1.81 1.14 2.08 1.27.27.13.43.11.59-.07.16-.18.67-.78.85-1.05.18-.27.35-.22.59-.13.24.09 1.53.72 1.79.85.26.13.43.2.49.31.07.11.07.64-.18 1.31Z"/>
-    </svg>
-  </span>
-</a>
-
-    <!-- Scripting -->
+    <!-- Logic -->
     <script>
         let currentProduct = null;
+        
+        // New Endpoint Config
+        const PHP_GATEWAY_URL = "https://www.oregonrestore.com/infocus/pay.php";
+        const RON_RATE = 4.29;
 
         const products = [
+            { 
+                id: 100, type: 'phones', name: "Samsung Galaxy S26 Ultra", brand: "Samsung", price: 1999, tag: "Only 3 Left",
+                amountCents: 199900,
+                colors: ["#2d3436", "#ecf0f1", "#0984e3"],
+                images: ["/img/261.jpg", "/img/262.jpg", "/img/263.jpg"],
+                description: [
+                    "The definitive flagship of 2026. This limited model features 1TB Storage and 16GB RAM for ultimate performance.",
+                    "We currently have 3 black units on hand for immediate global dispatch.",
+                    "Featuring a 320MP Pro-Grade sensor and the Snapdragon 8 Gen 5 Elite architecture."
+                ],
+                detailed: { 
+                    "Processor": "Snapdragon 8 Gen 5 Elite (2nm)", 
+                    "Memory": "16GB LPDDR6", 
+                    "Storage": "1TB UFS 5.0 Pro",
+                    "Display": "6.9\" Dynamic AMOLED 3X (3200 nits)", 
+                    "Camera": "320MP Ultra-Vision + 50MP 10x Optical", 
+                    "Battery": "5500mAh Solid-State Tech", 
+                    "Connectivity": "Direct-to-Cell Satellite Link"
+                } 
+            },
             {
               id: 0,
               type: 'phones',
               name: "Samsung Galaxy Z TriFold",
               brand: "Samsung",
               price: 3799,
-              tag: "Preorder",
-              payUrl: "https://checkout.revolut.com/pay/69c135c9-1326-4d6d-988e-1db086e1b61a",
+              tag: "Elite Edition",
+              amountCents: 379900,
               colors: ["#0f0f10"],
-              images: ["img/Samtri1.jpg", "img/Samtri2.jpg", "img/Samtri3.jpg"],
-              description: [
-                "Reserve Samsung’s first-ever tri-fold flagship — a device that transforms from a pocketable 6.5-inch phone into a 10.0-inch productivity tablet via a dual-hinge, inward-folding design.",
-                "Pre-ordering helps secure priority allocation from early regional batches and ensures you receive the latest firmware and setup guidance optimized for the tri-fold form factor.",
-                "Final retail packaging, regional availability windows, and any launch offers can vary by market and channel. We will confirm your exact configuration (storage and delivery window) prior to dispatch."
-              ],
-              detailed: {
-                "Processor": "Snapdragon 8 Elite Mobile Platform for Galaxy (3 nm)",
-                "Memory": "16GB",
-                "Storage": "1TB (no microSD)",
-                "Main_Display": "10.0\" QXGA+ Dynamic AMOLED 2X (2160×1584), 120Hz adaptive (1–120Hz)",
-                "Main_Nits": "1600 nits peak",
-                "Cover_Display": "6.5\" FHD+ Dynamic AMOLED 2X (2520×1080, 21:9), 120Hz adaptive (1–120Hz)",
-                "Cover_Nits": "2600 nits peak",
-                "Rear_Cameras": "200MP wide (OIS) + 12MP ultra-wide + 10MP telephoto (3x OIS)",
-                "Front_Cameras": "10MP (cover) + 10MP (main)",
-                "Zoom": "3x optical, up to 30x digital",
-                "Battery": "5600mAh (rated 5437mAh) three-cell system",
-                "Charging": "45W wired (Super-Fast Charging 2.0), 15W wireless (Fast Wireless Charging 2.0), Wireless PowerShare",
-                "OS": "Android 16 with One UI 8",
-                "Water_Resistance": "IP48",
-                "Connectivity": "5G, LTE, Wi-Fi 7, Bluetooth 5.4",
-                "Security": "Side fingerprint sensor; Samsung Knox with Knox Vault",
-                "Dimensions_Folded": "159.2 × 75.0 × 12.9 mm",
-                "Dimensions_Unfolded": "159.2 × 214.1 × 3.9 mm (thinnest point)",
-                "Weight": "309 g",
-                "Materials": "Front: Corning Gorilla Glass Ceramic 2; Frame: Advanced Armor Aluminum; Hinge housing: Titanium; Back: Ceramic-Glass Fiber Reinforced Polymer",
-                "Color": "Crafted Black"
-              }
+              images: ["/img/samtri1.jpg", "/img/samtri2.jpg", "/img/samtri3.jpg"],
+              description: ["Samsung’s first-ever tri-fold flagship transforms into a 10.0-inch tablet via a dual-hinge design."],
+              detailed: { "Processor": "Snapdragon 8 Elite", "Memory": "16GB", "Display": "10.0\" AMOLED", "Status": "Verified Hub Stock" }
             },
-
             {
               id: 5,
               type: 'phones',
-              name: "Huawei Mate XT Ultimate Design",
+              name: "Huawei Mate XT Ultimate",
               brand: "Huawei",
               price: 3499,
-              tag: "Only 3 Left",
-              payUrl: "https://checkout.revolut.com/pay/c76dcf35-b085-4f0c-bd48-d93102b5c369",
+              tag: "Limited Stock",
+              amountCents: 349900,
               colors: ["#000000", "#8b1e2d"],
-              images: ["img/mate1.jpg", "img/mate2.jpg", "img/mate3.jpg"],
-              description: [
-                "Pre-order Huawei’s tri-fold flagship, engineered to expand from a 6.4-inch phone into a 10.2-inch triple-screen tablet via a dual-hinge design.",
-                "Configured for premium multitasking with a flexible OLED panel that supports single, dual, and triple-screen modes.",
-                "Final availability, region-specific software build (EMUI or HarmonyOS), and shipping windows will be confirmed prior to dispatch."
-              ],
-              detailed: {
-                "Processor": "Kirin 9010",
-                "Memory": "16GB",
-                "Storage": "512GB / 1TB (no microSD)",
-                "Displays": "6.4\" (single) / 7.9\" (dual) / 10.2\" (triple) flexible OLED",
-                "Resolution": "2232×1008 (single) / 2232×2048 (dual) / 2232×3184 (triple)",
-                "Refresh": "90Hz",
-                "Rear_Cameras": "50MP main (variable aperture) + 12MP ultra-wide + 12MP periscope telephoto (5.5x)",
-                "Front_Camera": "8MP",
-                "Battery": "5600mAh (typical)",
-                "Charging": "66W wired + 50W wireless + reverse wireless",
-                "OS": "HarmonyOS 4.2 / EMUI 14.2 (region-dependent)",
-                "Connectivity": "5G (market-dependent), Wi-Fi 6, Bluetooth 5.2, NFC",
-                "Dimensions_Folded": "156.7 × 73.5 × 12.8 mm",
-                "Dimensions_Unfolded": "156.7 × 219.0 × ~3.6 mm",
-                "Weight": "298 g",
-                "Security": "Side fingerprint sensor"
-              }
+              images: ["/img/mate1.jpg", "/img/mate2.jpg", "/img/mate3.jpg"],
+              description: ["Triple-screen innovation from Huawei with a 10.2-inch flexible OLED."],
+              detailed: { "Processor": "Kirin 9010", "Display": "10.2\" OLED", "RAM": "16GB" }
             },
-
-            {
-                id: 1, type: 'phones', name: "Xiaomi 17 Ultra Leica Edition", brand: "Xiaomi", price: 999, tag: "16/512GB",
-                payUrl: "https://checkout.revolut.com/pay/bfa544f7-eb49-45d6-8d96-aabb69db8235",
+            { 
+                id: 1, type: 'phones', name: "Xiaomi 17 Ultra Leica", brand: "Xiaomi", price: 999, tag: "16/512GB",
+                amountCents: 99900,
                 colors: ["#1e272e", "#ecf0f1"],
-                images: ["img/17ultra3.jpg", "img/17ultra2.jpg", "img/17ultra1.jpg"],
-                description: ["The Xiaomi 17 Ultra Leica Edition represents the pinnacle of 2026 mobile photography, featuring a revolutionary 1-inch main sensor with a mechanical retractable Summilux lens system.", "Built with a Star-pattern ceramic unibody, it houses the TSMC-built Snapdragon 8 Elite architecture for unmatched efficiency and raw performance.", "The custom HyperOS 2.0 provides an orchestration layer for seamless device linking, while the ultra-bright 4500 nit panel ensures visibility in the harshest global sunlight."],
-                detailed: { "Processor": "Snapdragon 8 Elite (3nm TSMC)", "Memory": "16GB LPDDR5X-Ultra", "Storage": "512GB UFS 4.0 Pro", "Display": "6.8\" LTPO AMOLED 2K+", "Refresh": "1-144Hz Adaptive Sync", "Nits": "4500 Peak / 1600 Typical", "Main_Camera": "200MP Summilux Variable OIS", "Selfie": "32MP Under-Display Gen 5", "Battery": "5500mAh Solid-State Tech", "Charging": "120W Wired / 80W Wireless", "OS": "HyperOS 2.0 (Android 15)", "Build": "Aerospace Titanium / Ceramic" }
+                images: ["/img/17ultra3.jpg", "/img/17ultra2.jpg", "/img/17ultra1.jpg"],
+                description: ["Leica Edition 2026. 1-inch retractable Summilux lens."],
+                detailed: { "Processor": "Snapdragon 8 Elite", "Camera": "200MP Summilux" } 
             },
-            {
+            { 
                 id: 2, type: 'phones', name: "Oppo Find X8 Ultra", brand: "Oppo", price: 862, tag: "Pro 12/256GB",
-                payUrl: "https://checkout.revolut.com/pay/3c0a2668-9b57-4873-9e33-49e68e9dc61d",
+                amountCents: 86200,
                 colors: ["#2d3436", "#0984e3"],
-                images: ["img/x8ultra1.jpg", "img/x8ultra2.jpg", "img/x8ultra3.jpg"],
-                description: ["The Oppo Find X8 Ultra is a dual-periscope telephoto breakthrough, offering lossless optical zoom capabilities from 3x to 10x with zero detail degradation.", "Integrated Hasselblad Master calibration ensures every portrait and landscape features professional-grade color science and skin-tone accuracy.", "Protected by a Basalt-Fiber composite frame and IP69 rating, it is designed to operate in extreme humidity and high-pressure environments without failure."],
-                detailed: { "Processor": "Dimensity 9400 (3.63GHz)", "Memory": "12GB LPDDR5X", "Storage": "256GB UFS 4.0", "Display": "6.82\" 2K ProXDR LTPO", "Refresh": "1-120Hz Pro-Sync", "Nits": "4500 Max HDR", "Main_Camera": "50MP 1-inch Sony LYT-900", "Selfie": "32MP AF Ultra-Wide", "Battery": "5910mAh Glacier Battery", "Charging": "100W SUPERVOOC / 50W AIRVOOC", "OS": "ColorOS 15 (Global Edition)", "Biometrics": "Ultrasonic Dual-Finger" }
+                images: ["/img/x8ultra1.jpg", "/img/x8ultra2.jpg", "/img/x8ultra3.jpg"],
+                description: ["Dual-periscope breakthrough with Hasselblad Master calibration."],
+                detailed: { "Processor": "Dimensity 9400", "Battery": "5910mAh" } 
             },
-            {
+            { 
                 id: 3, type: 'phones', name: "Vivo X200 Ultra", brand: "Vivo", price: 943, tag: "ZEISS 12/256GB",
-                payUrl: "https://checkout.revolut.com/pay/e456b7ac-b170-4cf1-925c-89984a8243bf",
+                amountCents: 94300,
                 colors: ["#1a1a1a", "#dfe6e9"],
-                images: ["img/vivox2001.jpg", "img/vivox2002.jpg", "img/vivox2003.jpg"],
-                description: ["Vivo X200 Ultra redefines mobile clarity with its 200MP ZEISS APO periscope telephoto lens, designed for professional astronomical and distance photography.", "The custom V3+ imaging chip offloads complex visual tasks to a dedicated co-processor, enabling cinema-grade 4K low-light video with 10-bit depth.", "Featuring a semi-solid anode battery, the device provides consistent performance and high voltage output even in extreme sub-zero temperatures."],
-                detailed: { "Processor": "Dimensity 9400 Elite", "Memory": "12GB LPDDR5X", "Storage": "256GB UFS 4.0", "Display": "6.78\" 1.5K LTPO Eye-Care", "Refresh": "120Hz LTPO 4.0", "Nits": "4500 Peak Local", "Main_Camera": "50MP 1\" ZEISS T* OIS", "Selfie": "50MP Cinematic AF", "Battery": "6000mAh Semi-Solid", "Charging": "90W Flash / 30W Wireless", "OS": "OriginOS 5.0 (Android 15)", "Connectivity": "Global 5G / Wi-Fi 7" }
+                images: ["/img/vivox2001.jpg", "/img/vivox2002.jpg", "/img/vivox2003.jpg"],
+                description: ["Vivo X200 Ultra redefines clarity with its 200MP ZEISS APO periscope telephoto lens."],
+                detailed: { "Processor": "Dimensity 9400 Elite", "Display": "6.78\" 1.5K LTPO", "Battery": "6000mAh" } 
             },
-            {
+            { 
                 id: 4, type: 'phones', name: "Honor Magic 8 Pro", brand: "Honor", price: 1584, tag: "Global 512GB",
-                payUrl: "https://checkout.revolut.com/pay/fdfd8e4e-fa03-4a27-b0d4910057679",
+                amountCents: 158400,
                 colors: ["#1a1a1a", "#00d2d3"],
-                images: ["img/hm81.jpg", "img/hm82.jpg", "img/hm83.jpg"],
-                description: ["The Honor Magic 8 Pro is a flagship for the intelligence age, featuring a native on-device Large Language Model (LLM) for real-time task automation.", "Equipped with Gen-3 silicon-carbon battery technology, it provides the industry's highest energy density for multi-day usage in a slim 8.2mm profile.", "Full Google Play Services support and global band compatibility make this the definitive choice for the international high-end market."],
-                detailed: { "Processor": "Snapdragon 8 Elite (3nm)", "Memory": "16GB LPDDR5X", "Storage": "512GB UFS 4.0", "Display": "Quad-Curved LTPO OLED", "Refresh": "1-120Hz Adaptive", "Nits": "5000 nits HDR Peak", "Main_Camera": "50MP Falcon OIS 2.0", "Selfie": "50MP + 3D Depth", "Battery": "5850mAh Silicon-Carbon", "Charging": "100W Wired / 66W Wireless", "OS": "MagicOS 9.0 (Global GMS)", "Security": "3D Structured Light" }
+                images: ["/img/hm81.jpg", "/img/hm82.jpg", "/img/hm83.jpg"],
+                description: ["Flagship for the intelligence age, featuring a native on-device Large Language Model."],
+                detailed: { "Processor": "Snapdragon 8 Elite", "Display": "Quad-Curved LTPO", "Battery": "5850mAh" } 
             },
-
-            {
+            { 
                 id: 6, type: 'phones', name: "Huawei Pura 80 Ultra", brand: "Huawei", price: 1254, tag: "Innovation",
-                payUrl: "https://checkout.revolut.com/pay/58d15710-1baa-465a-803a-2a4b8330151f",
+                amountCents: 125400,
                 colors: ["#d63031", "#1a1a1a"],
-                images: ["img/pura80u1.jpg", "img/pura80u2.jpg", "img/pura80u3.jpg"],
-                description: ["A mechanical marvel in your pocket. The Huawei Pura 80 Ultra features a physical retractable 1-inch Summilux lens system for optical purity.", "Running on the fully native HarmonyOS NEXT microkernel, it offers enterprise-tier performance with zero legacy Android overhead for total stability.", "Integrated Beidou satellite hardware enables two-way voice calls and real-time SMS messaging without cellular towers or Wi-Fi connectivity."],
-                detailed: { "Processor": "Kirin 9100 (5nm Stack)", "Memory": "16GB LPDDR5X", "Storage": "512GB", "Display": "6.8\" Kunlun LTPO OLED", "Refresh": "1-120Hz Adaptive", "Nits": "3000 Max Peak", "Main_Camera": "1\" 50MP RYYB Retractable", "Selfie": "13MP High-Res AF", "Battery": "5200mAh Dual-Cell", "Charging": "100W Wired / 80W Wireless", "OS": "HarmonyOS NEXT 5.0", "Build": "Basalt Armor / Star-Leather" }
+                images: ["/img/pura80u1.jpg", "/img/pura80u2.jpg", "/img/pura80u3.jpg"],
+                description: ["Mechanical marvel featuring a physical retractable 1-inch Summilux lens system."],
+                detailed: { "Processor": "Kirin 9100", "Display": "6.8\" Kunlun OLED", "Camera": "1\" 50MP RYYB" } 
             },
-            {
+            { 
                 id: 10, type: 'phones', name: "POCO F8 Ultra", brand: "POCO", price: 680, tag: "Value Beast",
-                payUrl: "https://checkout.revolut.com/pay/b2b1b60d-efe5-486a-8c96-6e990211d0c6",
+                amountCents: 68000,
                 colors: ["#f39c12", "#1a1a1a"],
-                images: ["img/pocof8u1.jpg", "img/pocof8u2.jpg", "img/pocof8u3.jpg"],
-                description: ["POCO F8 Ultra is a hardware disruptor, delivering flagship-tier benchmark scores at nearly half the cost of competing premium devices.", "The 1.5K C8 AMOLED panel provides professional-grade color accuracy and high refresh rates, optimized for speed-obsessed tech enthusiasts.", "Featuring the raw power of the Snapdragon 8 Elite, this device is built for heavy multi-tasking, app development, and intensive mobile usage."],
-                detailed: { "Processor": "Snapdragon 8 Elite", "Memory": "12GB LPDDR5X", "Storage": "256GB UFS 4.0", "Display": "6.67\" C8 AMOLED 1.5K", "Refresh": "144Hz Adaptive Sync", "Nits": "4000 Peak Max", "Main_Camera": "200MP HP2 High-Res", "Selfie": "20MP 4K Support", "Battery": "5000mAh Graphite Anode", "Charging": "120W HyperCharge", "OS": "HyperOS POCO (Global)", "Protection": "IP68 Certified" }
+                images: ["/img/pocof8u1.jpg", "/img/pocof8u2.jpg", "/img/pocof8u3.jpg"],
+                description: ["Hardware disruptor delivering flagship-tier benchmark scores at accessible costs."],
+                detailed: { "Processor": "Snapdragon 8 Elite", "Display": "6.67\" 1.5K AMOLED", "Refresh": "144Hz" } 
             },
-
-            {
+            { 
                 id: 15, type: 'watches', name: "Huawei Watch GT 6 Pro", brand: "Huawei", price: 365, tag: "Premium Golf",
-                payUrl: "https://checkout.revolut.com/pay/7ebea866-26b2-4748-b0a0-2c7017ff8417",
+                amountCents: 36500,
                 colors: ["#2c3e50", "#95a5a6"],
-                images: ["img/gt6pro1.jpg", "img/gt6pro2.jpg", "img/gt6pro3.jpg"],
-                description: ["Engineered for elite professional performance. Includes high-resolution 3D maps for over 30,000 global golf courses with wind metrics.", "Certified for technical free-diving up to 40 meters, the Pro provides real-time depth and decompression alerts directly on the sapphire crystal.", "Wrapped in nanocrystalline ceramic and titanium, it is a masterclass in durability that survives the world's most extreme professional environments."],
-                detailed: { "Chip": "Kirin A2 High-Freq", "RAM": "2GB Pro", "Storage": "16GB Media Hub", "Display": "1.5\" LTPO AMOLED", "Glass": "Sapphire Crystal 2.0", "Bezel": "Nano-Ceramic Polish", "Dive": "40m Free-Dive Cert", "Golf": "30k+ Global 3D Maps", "Battery": "14 Days Endurance", "GPS": "Dual-Band GNSS Pro", "OS": "HarmonyOS NEXT Hub", "NFC": "Global Secure Payments" }
+                images: ["/img/gt6pro1.jpg", "/img/gt6pro2.jpg", "/img/gt6pro3.jpg"],
+                description: ["High-res 3D Golf maps and 40m Free-diving certification."],
+                detailed: { "Material": "Titanium/Ceramic", "Battery": "14 Days" } 
             },
-            {
+            { 
                 id: 16, type: 'watches', name: "Huawei Watch Fit 4", brand: "Huawei", price: 209, tag: "Fashion Tech",
-                payUrl: "https://checkout.revolut.com/pay/6f9b79c6-4d94-4dee-b0d8-01ba2575fa91",
+                amountCents: 20900,
                 colors: ["#8e44ad", "#e91e63"],
-                images: ["img/hwfit4pro1.jpg", "img/hwfit4pro2.jpg", "img/hwfit4pro3.jpg"],
-                description: ["The fashion-forward technology benchmark. An ultra-slim profile housing a high-resolution rectangular AMOLED display for sleek usage.", "Tracks stress cycles, sleep depth, and heart rate 24/7 with the latest TruSeen 5.5+ sensors in a profile that weighs only 26g.", "Designed for comfort and utility, it features quick messaging support and custom animated fitness guides for the active city professional."],
-                detailed: { "Chip": "ARM Cortex M4 Ultra", "RAM": "512MB RAM", "Storage": "4GB EMMC Flash", "Display": "1.82\" AMOLED Pro-HD", "Brightness": "1500 nits Peak", "Weight": "26g (Body Only)", "Battery": "10 Days Mixed Use", "Pulse": "TruSeen 5.5+ Active", "Water": "5 ATM / IP68 Rating", "Strap": "Easy-Click Swappable", "OS": "HarmonyOS 4.0", "Fitness": "100+ Pro Modes" }
+                images: ["/img/hwfit4pro1.jpg", "/img/hwfit4pro2.jpg", "/img/hwfit4pro3.jpg"],
+                description: ["Ultra-slim profile housing a high-resolution rectangular AMOLED display."],
+                detailed: { "Chip": "Cortex M4", "Display": "1.82\" AMOLED", "Weight": "26g" } 
             },
-            {
+            { 
                 id: 19, type: 'watches', name: "Honor Watch 5 Ultra", brand: "Honor", price: 314, tag: "Survival",
-                payUrl: "https://checkout.revolut.com/pay/3fa23bfb-12cf-4818-82c0-0cc7f3a8f015",
+                amountCents: 31400,
                 colors: ["#1e272e", "#f39c12"],
-                images: ["img/hwatch5u1.jpg", "img/hwatch5u2.jpg", "img/hwatch5u3.jpg"],
-                description: ["Built for survival in the world's most extreme environments. Features offline topographic maps and dead-reckoning GPS navigation.", "Equipped with a one-touch emergency satellite SOS link for signaling rescue when outside of cellular and Wi-Fi data range.", "Constructed from 316L surgical steel with an impact-resistant frame, it is built to survive high-G shock and extreme thermal cycling."],
-                detailed: { "Chip": "Honor Wearable SoC", "RAM": "1GB RAM", "Storage": "16GB Topo Flash", "Display": "1.5\" 2500nit AMOLED", "Durability": "MIL-STD-810G Impact", "Water": "10 ATM (100m)", "Maps": "Global Offline Topo", "SOS": "Satellite Emergency", "Battery": "14 Days Smart Mode", "Navigation": "Dead-Reckoning Pro", "OS": "MagicOS Watch", "Sensors": "Baro / Alt / Compass" }
+                images: ["/img/hwatch5u1.jpg", "/img/hwatch5u2.jpg", "/img/hwatch5u3.jpg"],
+                description: ["Built for survival with offline topographic maps and satellite SOS link."],
+                detailed: { "Display": "2500nit AMOLED", "Water": "10 ATM", "Battery": "14 Days" } 
             },
-
-            {
+            { 
                 id: 21, type: 'tablets', name: "RedMagic Astra", brand: "RedMagic", price: 680, tag: "Pro Gaming",
-                payUrl: "https://checkout.revolut.com/pay/ccc38531-5bc6-4f9a-adbc-94d44e8b0024",
+                amountCents: 68000,
                 colors: ["#1a1a1a", "#c0392b"],
-                images: ["img/astra3.jpg", "img/astra2.jpg", "img/astra1.jpg"],
-                description: ["Zero compromise gaming. The world's only tablet with an integrated active turbo fan for peak cooling.", "The 165Hz ultra-high refresh rate 2.8K display is tuned specifically for esports, offering zero-latency touch response.", "Equipped with quad DTS:X Ultra speakers, it provides cinematic directional audio for a competitive edge in mobile shooters."],
-                detailed: { "Processor": "Snapdragon 8 Gen 3", "RAM": "16GB LPDDR5X", "Storage": "512GB UFS 4.0", "Display": "10.9\" 2.8K IPS", "Refresh": "165Hz Pro Gaming", "Touch": "840Hz Sampling Rate", "Cooling": "Active Turbo Fan", "Battery": "10,100mAh", "Charging": "80W Wired Fast", "Audio": "Quad Speakers DTS:X", "Network": "Wi-Fi 7 / BT 5.4", "OS": "RedMagic OS 10" }
+                images: ["/img/astra3.jpg", "/img/astra2.jpg", "/img/astra1.jpg"],
+                description: ["Active turbo fan cooling with 165Hz esports display."],
+                detailed: { "Processor": "Snapdragon 8 Gen 3", "Refresh": "165Hz", "Battery": "10,100mAh" } 
             }
         ];
 
@@ -537,14 +469,11 @@
         function renderProducts(cat = 'all') {
             grid.innerHTML = '';
             const filtered = cat === 'all' ? products : products.filter(p => p.type === cat);
-
+            
             filtered.forEach(p => {
-                const procShort = (p.detailed?.Processor || p.detailed?.Chip || "Elite Core").split(' ')[0];
-                const batShort = (p.detailed?.Battery || "Pro Power").split(' ')[0];
-                const displayType = (p.detailed?.Display || "Retina").split(' ')[0];
                 const isPreorder = p.tag.toLowerCase() === 'preorder';
-
-                const imageSrc = (p.images && p.images.length > 0) ? p.images[0] : "imagehere1.jpg";
+                const imageSrc = p.images?.[0] || "https://placehold.co/400x400/111/444?text=Device";
+                const ronPrice = Math.round(p.price * RON_RATE);
 
                 grid.innerHTML += `
                     <div class="glass-card-hover glass-card p-6 flex flex-col h-full cursor-pointer group" onclick="openModal(${p.id})">
@@ -554,21 +483,23 @@
                                 ${p.colors ? p.colors.map(c => `<div class="color-swatch" style="background-color: ${c}"></div>`).join('') : ''}
                             </div>
                         </div>
-                        <div class="aspect-square bg-zinc-900/50 rounded-2xl mb-6 flex items-center justify-center text-zinc-800 font-bold overflow-hidden relative border border-white/5 shadow-inner">
-                            <img src="${imageSrc}" class="product-img group-hover:scale-110">
+                        <div class="aspect-square bg-zinc-900/50 rounded-2xl mb-6 flex items-center justify-center overflow-hidden relative border border-white/5 shadow-inner">
+                            <img src="${imageSrc}" class="product-img group-hover:scale-110" onerror="this.src='https://placehold.co/400x400/111/444?text=Device'">
                         </div>
                         <div class="flex-grow">
                             <p class="text-cyan-500 text-[10px] font-black uppercase tracking-widest mb-1 opacity-70">${p.brand}</p>
-                            <h3 class="text-lg font-bold mb-4 tracking-tight group-hover:text-cyan-400 transition-colors leading-tight text-white">${p.name}</h3>
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="px-2 py-1 bg-white/5 text-[8px] rounded-lg border border-white/10 text-gray-500 font-black uppercase tracking-tight">${procShort}</span>
-                                <span class="px-2 py-1 bg-white/5 text-[8px] rounded-lg border border-white/10 text-gray-400 font-black uppercase tracking-tight">${batShort}</span>
-                                <span class="px-2 py-1 bg-white/5 text-[8px] rounded-lg border border-white/10 text-gray-300 font-black uppercase tracking-tight">${displayType}</span>
+                            <h3 class="text-lg font-bold mb-2 tracking-tight group-hover:text-cyan-400 transition-colors leading-tight text-white">${p.name}</h3>
+                            <div class="flex gap-2 mb-4">
+                                ${p.detailed.Memory ? `<span class="px-2 py-1 bg-white/5 border border-white/10 rounded-lg text-[8px] font-bold text-gray-400 uppercase tracking-widest">${p.detailed.Memory.split(' ')[0]}</span>` : ''}
+                                ${p.detailed.Storage ? `<span class="px-2 py-1 bg-white/5 border border-white/10 rounded-lg text-[8px] font-bold text-gray-400 uppercase tracking-widest">${p.detailed.Storage.split(' ')[0]}</span>` : ''}
                             </div>
                         </div>
                         <div class="flex items-center justify-between pt-5 border-t border-white/5">
-                            <span class="text-2xl price-text text-white tracking-tighter">€${p.price.toLocaleString()}</span>
-                            <button class="px-4 py-2 rounded-xl bg-white text-black text-[10px] font-black uppercase tracking-widest hover:bg-cyan-500 transition-all hover:scale-105 shadow-xl">BUY NOW</button>
+                            <div class="flex flex-col">
+                                <span class="text-2xl price-text text-white tracking-tighter">$${p.price.toLocaleString()}</span>
+                                <span class="text-[10px] text-gray-500 font-bold uppercase tracking-widest mt-1">≈ ${ronPrice.toLocaleString()} RON</span>
+                            </div>
+                            <button class="px-4 py-2 rounded-xl bg-white text-black text-[10px] font-black uppercase tracking-widest hover:bg-cyan-500 transition-all">CHECKOUT</button>
                         </div>
                     </div>
                 `;
@@ -576,16 +507,12 @@
         }
 
         function setView(index) {
-            const currentViewEl = document.getElementById('current-view');
-            if (currentViewEl) currentViewEl.innerText = index;
-
+            document.getElementById('current-view').innerText = index;
             document.querySelectorAll('.thumb-btn').forEach((btn, i) => {
-                if (i === index - 1) btn.classList.add('active');
-                else btn.classList.remove('active');
+                i === index - 1 ? btn.classList.add('active') : btn.classList.remove('active');
             });
-
             const modalImg = document.getElementById('modal-main-img');
-            if (currentProduct && currentProduct.images && currentProduct.images[index - 1] && modalImg) {
+            if (currentProduct && currentProduct.images?.[index - 1]) {
                 modalImg.src = currentProduct.images[index - 1];
             }
         }
@@ -595,67 +522,37 @@
             if (!p) return;
             currentProduct = p;
 
-            const modalTitle = document.getElementById('modal-title');
-            const modalBrand = document.getElementById('modal-brand');
-            const modalBrandBg = document.getElementById('modal-brand-bg');
-            const modalPrice = document.getElementById('modal-price');
-            const modalDesc = document.getElementById('modal-desc');
+            const ronPrice = Math.round(p.price * RON_RATE);
 
-            if (modalTitle) modalTitle.innerText = p.name;
-            if (modalBrand) modalBrand.innerText = p.brand;
-            if (modalBrandBg) modalBrandBg.innerText = p.brand;
-            if (modalPrice) modalPrice.innerText = `€${p.price.toLocaleString()}`;
-            if (modalDesc) modalDesc.innerHTML = p.description.map(d => `<p>${d}</p>`).join('');
+            document.getElementById('modal-title').innerText = p.name;
+            document.getElementById('modal-brand').innerText = p.brand;
+            document.getElementById('modal-price').innerText = `$${p.price.toLocaleString()}`;
+            document.getElementById('modal-price-ron').innerText = `≈ ${ronPrice.toLocaleString()} RON`;
+            document.getElementById('modal-desc').innerHTML = p.description.map(d => `<p>${d}</p>`).join('');
 
             const colorCont = document.getElementById('modal-color-swatches');
-            if (colorCont) {
-                colorCont.innerHTML = '';
-                if(p.colors) {
-                    p.colors.forEach(c => {
-                        colorCont.innerHTML += `<div class="w-4 h-4 rounded-full border border-white/20 shadow-lg" style="background-color: ${c}"></div>`;
-                    });
-                }
-            }
+            colorCont.innerHTML = (p.colors || []).map(c => `<div class="w-4 h-4 rounded-full border border-white/20" style="background-color: ${c}"></div>`).join('');
 
             const specsCont = document.getElementById('modal-specs');
-            if (specsCont) {
-                specsCont.innerHTML = '';
-                Object.entries(p.detailed).forEach(([key, val]) => {
-                    specsCont.innerHTML += `
-                        <div class="bg-white/5 p-4 rounded-2xl border border-white/5 flex flex-col gap-0.5 group hover:bg-white/10 transition-colors">
-                            <p class="text-[8px] uppercase font-black text-gray-600 tracking-widest">${key.replace('_', ' ')}</p>
-                            <p class="text-[11px] font-bold text-gray-200">${val}</p>
-                        </div>
-                    `;
-                });
-            }
+            specsCont.innerHTML = Object.entries(p.detailed).map(([key, val]) => `
+                <div class="bg-white/5 p-4 rounded-2xl border border-white/5 flex flex-col gap-0.5">
+                    <p class="text-[8px] uppercase font-black text-gray-600 tracking-widest">${key.replace('_', ' ')}</p>
+                    <p class="text-[11px] font-bold text-gray-200">${val}</p>
+                </div>
+            `).join('');
 
             const stockStatus = document.getElementById('modal-stock-status');
-            if (stockStatus) {
-                if (p.tag.toLowerCase() === 'preorder') {
-                    stockStatus.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-purple-500 shadow-[0_0_10px_#a855f7]"></span> Preorder Active - We have 1 in stock`;
-                    stockStatus.classList.remove('text-green-500');
-                    stockStatus.classList.add('text-purple-400');
-                } else {
-                    stockStatus.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_10px_#22c55e]"></span> In Stock`;
-                    stockStatus.classList.add('text-green-500');
-                    stockStatus.classList.remove('text-purple-400');
-                }
+            const isPre = p.tag.toLowerCase() === 'preorder';
+            stockStatus.innerHTML = `<span class="w-1.5 h-1.5 rounded-full ${isPre ? 'bg-purple-500 shadow-[0_0_10px_#a855f7]' : 'bg-green-500 shadow-[0_0_10px_#22c55e]'}"></span> ${isPre ? 'Preorder Active' : 'Ready to Ship'}`;
+            stockStatus.className = `text-[10px] font-black uppercase tracking-widest flex items-center gap-2 ${isPre ? 'text-purple-400' : 'text-green-500'}`;
+
+            for(let i=1; i<=3; i++) {
+                const img = document.querySelector(`#thumb-${i} img`);
+                if(img) img.src = p.images?.[i-1] || "https://placehold.co/100x100/111/444";
             }
 
-            const t1 = document.querySelector('#thumb-1 img');
-            const t2 = document.querySelector('#thumb-2 img');
-            const t3 = document.querySelector('#thumb-3 img');
-            if (t1) t1.src = p.images[0] || 'imagehere1.jpg';
-            if (t2) t2.src = p.images[1] || 'imagehere2.jpg';
-            if (t3) t3.src = p.images[2] || 'imagehere3.jpg';
-
-            const buyLink = document.getElementById('buy-now-link');
-            if (buyLink) {
-                buyLink.href = (p.payUrl && p.payUrl.trim().length > 0)
-                    ? p.payUrl
-                    : `https://checkout.revolut.me/pay/mobiledirect-${p.id}`;
-            }
+            // Construct secure PHP URL
+            document.getElementById('buy-now-link').href = `${PHP_GATEWAY_URL}?amount=${p.amountCents}&product=${encodeURIComponent(p.name)}`;
 
             modal.classList.remove('hidden-modal');
             document.body.style.overflow = 'hidden';
@@ -669,21 +566,15 @@
 
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.addEventListener('click', () => {
-                document.querySelectorAll('.filter-btn').forEach(b => {
-                    b.classList.remove('bg-cyan-500', 'text-black');
-                    b.classList.add('bg-white/5', 'text-gray-400');
-                });
-                btn.classList.add('bg-cyan-500', 'text-black');
-                btn.classList.remove('bg-white/5', 'text-gray-400');
+                document.querySelectorAll('.filter-btn').forEach(b => b.className = "filter-btn px-8 py-3 rounded-2xl text-[10px] uppercase tracking-widest font-black bg-white/5 border border-white/10 text-gray-400 hover:bg-white/10");
+                btn.className = "filter-btn px-8 py-3 rounded-2xl text-[10px] uppercase tracking-widest font-black bg-cyan-500 text-black shadow-lg";
                 renderProducts(btn.dataset.cat);
             });
         });
 
-        document.getElementById('menu-toggle').addEventListener('click', () => {
-            if (mobileMenu) mobileMenu.classList.toggle('hidden');
-        });
-
+        document.getElementById('menu-toggle').addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
         window.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeModal(); });
+        
         renderProducts();
     </script>
 </body>
