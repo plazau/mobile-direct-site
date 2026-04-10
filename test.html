@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Direct | Premium Global Technology 2026</title>
+    
+    <!-- External Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --background: 220 20% 6%;
+            --foreground: 210 40% 98%;
+            --card: 220 18% 10%;
+            --primary: 190 100% 50%;
+            --accent: 280 100% 65%;
+            --border: 220 15% 18%;
+            --gradient-primary: linear-gradient(135deg, hsl(190 100% 50%) 0%, hsl(280 100% 65%) 100%);
+            --glow-primary: 0 0 40px hsl(190 100% 50% / 0.3);
+            --shadow-card: 0 8px 32px hsl(0 0% 0% / 0.4);
+        }
+
+        body {
+            background-color: hsl(220, 20%, 6%);
+            color: hsl(210, 40%, 98%);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            background: hsla(220, 18%, 10%, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid hsla(220, 15%, 18%, 0.5);
+            border-radius: 1.5rem;
+            box-shadow: var(--shadow-card);
+        }
+
+        .glass-card-hover {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card-hover:hover {
+            border-color: hsla(190, 100%, 50%, 0.3);
+            box-shadow: 0 16px 48px hsl(0 0% 0% / 0.5), var(--glow-primary);
+            transform: translateY(-8px);
+        }
+
+        .gradient-text {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .price-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.05em;
+        }
+
+        @keyframes slide-up {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-slide-up { animation: slide-up 0.6s ease-out forwards; }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: hsl(var(--primary)); }
+
+        #product-modal { transition: opacity 0.3s ease; }
+        .hidden-modal { opacity: 0; pointer-events: none; }
+
+        .color-swatch {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.2);
+            flex-shrink: 0;
+        }
+        
+        .thumb-btn {
+            border: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+        .thumb-btn.active {
+            border-color: #06b6d4;
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hero-media {
+            width: 100%;
+            height: clamp(260px, 45vh, 520px);
+            border-radius: 2.75rem;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.06);
+            box-shadow: 0 24px 60px rgba(0,0,0,0.55);
+            position: relative;
+            background: rgba(0,0,0,0.35);
+        }
+        .hero-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            transform: translateZ(0);
+        }
+        .hero-media::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(6,182,212,0.18), transparent 45%),
+                        radial-gradient(circle at 80% 60%, rgba(168,85,247,0.18), transparent 45%),
+                        linear-gradient(to bottom, rgba(0,0,0,0.10), rgba(0,0,0,0.55));
+            pointer-events: none;
+        }
+
+        /* ── Referral styles ── */
+        .ref-input-wrap { position: relative; }
+        .ref-input {
+            width: 100%;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 0.75rem;
+            padding: 0.55rem 2.8rem 0.55rem 0.85rem;
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            outline: none;
+            transition: border-color 0.25s, box-shadow 0.25s;
+        }
+        .ref-input::placeholder { color: rgba(255,255,255,0.25); }
+        .ref-input:focus { border-color: rgba(6,182,212,0.5); box-shadow: 0 0 0 2px rgba(6,182,212,0.12); }
+        .ref-input.valid   { border-color: rgba(34,197,94,0.6);  box-shadow: 0 0 0 2px rgba(34,197,94,0.12); }
+        .ref-input.invalid { border-color: rgba(239,68,68,0.6);  box-shadow: 0 0 0 2px rgba(239,68,68,0.12); }
+        .ref-badge {
+            position: absolute; right: 0.6rem; top: 50%; transform: translateY(-50%);
+            font-size: 9px; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase;
+            padding: 2px 6px; border-radius: 99px;
+        }
+        .ref-badge.ok  { background: rgba(34,197,94,0.15);  color: #22c55e; }
+        .ref-badge.err { background: rgba(239,68,68,0.15);  color: #ef4444; }
+        .discount-line {
+            font-size: 10px; font-weight: 900; text-transform: uppercase;
+            letter-spacing: 0.12em; color: #22c55e;
+            display: none;
+        }
+        .price-original { text-decoration: line-through; color: rgba(255,255,255,0.3); font-size: 0.75em; }
+
+        /* Admin panel */
+        #admin-panel {
+            display: none;
+            position: fixed; inset: 0; z-index: 200;
+            background: rgba(0,0,0,0.96); backdrop-filter: blur(20px);
+            overflow-y: auto; padding: 2rem;
+        }
+        .admin-table { width: 100%; border-collapse: collapse; font-size: 11px; }
+        .admin-table th { color: rgba(6,182,212,1); font-weight: 900; text-transform: uppercase;
+            letter-spacing: 0.12em; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 8px 12px; text-align: left; }
+        .admin-table td { padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.04); color: rgba(255,255,255,0.75); }
+        .admin-table tr:hover td { background: rgba(255,255,255,0.03); }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Global Currency Bar -->
+    <div class="bg-cyan-600/10 border-b border-cyan-500/20 py-2 text-center relative z-[60]">
+        <p class="text-[9px] font-black uppercase tracking-[0.4em] text-cyan-400">
+            NOTICE: All payments are securely processed in <span class="text-white">Romanian Leu (RON)</span> at a fixed rate of 1 USD = 4.29 RON
+        </p>
+    </div>
+
+    <!-- Header -->
+    <header class="fixed top-9 left-0 right-0 z-50 bg-black/50 backdrop-blur-xl border-b border-white/10">
+        <div class="container mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shadow-lg overflow-hidden">
+                    <img src="/img/logo1.png" alt="Mobile Direct Logo" class="w-full h-full object-contain p-1" onerror="this.src='https://placehold.co/40x40/000/FFF?text=MD'">
+                </div>
+                <span class="text-xl font-bold gradient-text tracking-tighter uppercase">Mobile Direct</span>
+            </div>
+
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#products" class="text-gray-400 hover:text-white transition-colors text-xs font-bold uppercase tracking-widest">Inventory</a>
+                <a href="#about" class="text-gray-400 hover:text-white transition-colors text-xs font-bold uppercase tracking-widest">About</a>
+            </nav>
+
+            <div class="hidden md:flex items-center gap-4 text-xs font-black text-gray-500 uppercase tracking-widest">
+                <span>Authorized Distribution Hub</span>
+            </div>
+
+            <button id="menu-toggle" class="md:hidden p-2 text-gray-400">
+                <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            </button>
+        </div>
+        
+        <div id="mobile-menu" class="hidden md:hidden bg-zinc-900 border-b border-white/10 py-6 px-4 space-y-4 text-center">
+            <a href="#products" class="block text-sm font-bold text-gray-300 uppercase tracking-widest">Inventory</a>
+            <a href="#about" class="block text-sm font-bold text-gray-300 uppercase tracking-widest">About</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[85vh] flex items-center justify-center pt-28 overflow-hidden bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-zinc-900 via-background to-background">
+        <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
+            <div class="space-y-8 animate-slide-up">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[10px] text-gray-400 font-black uppercase tracking-[0.3em]">
+                    <span class="text-cyan-400">⚡</span> Global Checkout Processed in RON
+                </div>
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black leading-none tracking-tighter text-white">
+                    Mobile<br>
+                    <span class="gradient-text">Direct</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-400 max-w-xl leading-relaxed font-medium">
+                    The World’s Market. Without Borders. Since 2019.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#products" class="px-10 py-5 bg-white text-black rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-cyan-500 transition-all text-center shadow-xl">Explore Inventory</a>
+                </div>
+            </div>
+
+            <div class="relative flex justify-center items-center w-full">
+                <div class="absolute inset-0 bg-cyan-500/5 blur-[120px] rounded-full scale-150"></div>
+                <div class="hero-media w-full max-w-2xl">
+                    <img src="/img/hero.jpg" alt="Mobile Direct Hero" onerror="this.src='https://placehold.co/800x600/111/444?text=Mobile+Direct+2026'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Grid Section -->
+    <section id="products" class="py-24 bg-zinc-950/30">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20 space-y-4">
+                <h2 class="text-4xl md:text-6xl font-black tracking-tighter uppercase text-balance text-white">Available <span class="gradient-text">Units</span></h2>
+                <p class="text-gray-500 max-w-2xl mx-auto text-[10px] uppercase font-black tracking-[0.5em]">Secure Checkout • 1 USD ≈ 4.29 RON</p>
+                
+                <div class="flex flex-wrap justify-center gap-3 pt-12" id="filter-tabs">
+                    <button data-cat="all" class="filter-btn px-8 py-3 rounded-2xl text-[10px] uppercase tracking-widest font-black bg-cyan-500 text-black shadow-lg">All</button>
+                    <button data-cat="phones" class="filter-btn px-8 py-3 rounded-2xl text-[10px] uppercase tracking-widest font-black bg-white/5 border border-white/10 text-gray-400 hover:bg-white/10">Flagships</button>
+                    <button data-cat="watches" class="filter-btn px-8 py-3 rounded-2xl text-[10px] uppercase tracking-widest font-black bg-white/5 border border-white/10 text-gray-400 hover:bg-white/10">Wearables</button>
+                    <button data-cat="tablets" class="filter-btn px-8 py-3 rounded-2xl text-[10px] uppercase tracking-widest font-black bg-white/5 border border-white/10 text-gray-400 hover:bg-white/10">Tablets</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="product-grid">
+                <!-- Data injection -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="about" class="py-24 bg-zinc-950 border-t border-white/5 relative overflow-hidden">
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <div class="flex items-center justify-center gap-2 mb-8">
+                <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shadow-lg overflow-hidden">
+                    <img src="/img/logo1.png" alt="Mobile Direct Logo" class="w-full h-full object-contain p-1" onerror="this.src='https://placehold.co/40x40/000/FFF?text=MD'">
+                </div>
+                <span class="text-2xl font-bold gradient-text uppercase tracking-tight">Mobile Direct</span>
+            </div>
+            <div class="max-w-2xl mx-auto space-y-6 mb-12 text-center">
+                <div class="glass-card p-8 border-cyan-500/20">
+                    <h4 class="text-xs font-black uppercase text-cyan-400 tracking-[0.4em] mb-4">Secure Transactions</h4>
+                    <p class="text-gray-300 text-sm font-medium leading-relaxed">
+                        We have integrated <strong>Viva.com</strong> for enterprise-grade payment processing. 
+                        Please note: To comply with local financial regulations, your transaction will be processed in <strong>Romanian Leu (RON)</strong> at a fixed exchange rate of 1 USD = 4.29 RON.
+                    </p>
+                </div>
+            </div>
+            <div class="pt-10 border-t border-white/5 text-gray-600 text-[9px] font-black uppercase tracking-[0.4em]">
+                © 2019-2026 Mobile Direct. Verified Viva.com Merchant.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Product Modal -->
+    <div id="product-modal" class="fixed inset-0 z-[100] flex items-center justify-center px-4 hidden-modal">
+        <div class="absolute inset-0 bg-black/98 backdrop-blur-2xl" onclick="closeModal()"></div>
+        <div class="relative glass-card max-w-6xl w-full max-h-[95vh] overflow-y-auto grid lg:grid-cols-2 shadow-2xl border-white/10" onclick="event.stopPropagation()">
+            <button class="absolute top-8 right-8 z-20 p-3 bg-white/5 rounded-full hover:bg-white/10 transition-colors border border-white/5 text-white" onclick="closeModal()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" x2="6" x2="6" y2="18"/><line x1="6" x2="6" x2="18" y2="18"/></svg>
+            </button>
+            
+            <div class="p-12 bg-white/[0.01] flex flex-col items-center justify-center border-r border-white/5 h-full min-h-[450px]">
+                <div class="w-full flex-grow flex items-center justify-center mb-10 relative">
+                    <div class="w-full aspect-square bg-zinc-900 rounded-[3rem] flex items-center justify-center relative shadow-inner overflow-hidden border border-white/5">
+                         <img id="modal-main-img" class="product-img" src="" alt="Product view">
+                         <div class="absolute bottom-6 left-1/2 -translate-x-1/2 px-4 py-1 bg-black/60 backdrop-blur-md rounded-full text-[8px] font-black uppercase text-gray-400 tracking-widest border border-white/10">
+                            View <span id="current-view">1</span>
+                         </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-3 w-full max-w-[320px]">
+                    <button id="thumb-1" onclick="setView(1)" class="thumb-btn active aspect-square bg-zinc-800 rounded-2xl border-white/10 flex items-center justify-center overflow-hidden">
+                        <img src="" class="w-full h-full object-cover opacity-50">
+                    </button>
+                    <button id="thumb-2" onclick="setView(2)" class="thumb-btn aspect-square bg-zinc-800 rounded-2xl border-white/10 flex items-center justify-center overflow-hidden">
+                        <img src="" class="w-full h-full object-cover opacity-50">
+                    </button>
+                    <button id="thumb-3" onclick="setView(3)" class="thumb-btn aspect-square bg-zinc-800 rounded-2xl border-white/10 flex items-center justify-center overflow-hidden">
+                        <img src="" class="w-full h-full object-cover opacity-50">
+                    </button>
+                </div>
+            </div>
+
+            <div class="p-12 space-y-10 text-left overflow-y-auto">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <p id="modal-brand" class="text-cyan-400 text-xs font-black uppercase tracking-[0.4em]"></p>
+                        <div id="modal-color-swatches" class="flex gap-2 p-1.5 bg-white/5 rounded-full px-4 border border-white/5"></div>
+                    </div>
+                    <h2 id="modal-title" class="text-4xl font-black text-white leading-none tracking-tighter"></h2>
+                </div>
+                
+                <div id="modal-desc" class="space-y-4 text-gray-400 text-sm font-medium leading-relaxed border-l-2 border-cyan-500/20 pl-4"></div>
+
+                <div class="flex items-center gap-6 py-8 border-y border-white/5">
+                    <div class="flex flex-col">
+                        <span id="modal-price" class="text-5xl price-text text-white tracking-tighter"></span>
+                        <span id="modal-price-ron" class="text-sm font-bold text-gray-500 uppercase tracking-widest mt-1"></span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span id="modal-stock-status" class="text-[10px] font-black text-green-500 uppercase tracking-widest flex items-center gap-2"></span>
+                        <span class="text-[9px] text-gray-500 font-bold uppercase tracking-widest">Final Amount in RON</span>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="flex items-center gap-3">
+                        <h4 class="text-[10px] font-black text-gray-500 uppercase tracking-[0.4em]">Specifications</h4>
+                        <div class="h-px flex-1 bg-white/5"></div>
+                    </div>
+                    <div id="modal-specs" class="grid grid-cols-2 gap-x-6 gap-y-4"></div>
+                    <div class="p-4 bg-white/5 rounded-xl border border-white/10">
+                        <p class="text-[9px] font-black text-gray-500 uppercase tracking-[0.2em] leading-relaxed">
+                            <span class="text-cyan-500">Notice:</span> 
+                            Payments are processed via Viva.com in local currency (RON). 
+                            Total checkout will be calculated at a fixed rate of 4.29.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="pt-8">
+                    <a id="buy-now-link" href="#" target="_blank" onclick="logPurchase()" class="w-full py-6 bg-white text-black rounded-[2rem] font-black text-xs uppercase tracking-[0.3em] hover:bg-cyan-500 transition-all hover:scale-[1.01] shadow-2xl flex items-center justify-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M2 12h20" stroke-linecap="round"/></svg>
+                        SECURE CHECKOUT (RON)
+                    </a>
+
+                    <!-- Referral code input -->
+                    <div class="mt-4 space-y-2">
+                        <p class="text-[9px] font-black uppercase tracking-[0.3em] text-gray-500">Have a referral code?</p>
+                        <div class="ref-input-wrap">
+                            <input id="modal-ref-input" type="text" maxlength="12" placeholder="Enter code…" class="ref-input" oninput="applyModalCode(this.value)">
+                            <span id="modal-ref-badge" class="ref-badge" style="display:none;"></span>
+                        </div>
+                        <p id="modal-discount-line" class="discount-line">🎉 10% discount applied!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Tracking Panel -->
+    <div id="admin-panel">
+        <div style="max-width:900px;margin:0 auto;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;">
+                <h2 style="font-size:1.5rem;font-weight:900;letter-spacing:-0.03em;color:#fff;">
+                    Referral <span style="background:linear-gradient(135deg,#06b6d4,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Tracker</span>
+                </h2>
+                <div style="display:flex;gap:0.75rem;">
+                    <button onclick="exportCSV()" style="padding:0.5rem 1.25rem;background:rgba(6,182,212,0.15);border:1px solid rgba(6,182,212,0.3);border-radius:0.75rem;color:#06b6d4;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:0.12em;cursor:pointer;">Export CSV</button>
+                    <button onclick="clearLogs()" style="padding:0.5rem 1.25rem;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);border-radius:0.75rem;color:#ef4444;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:0.12em;cursor:pointer;">Clear All</button>
+                    <button onclick="closeAdmin()" style="padding:0.5rem 1.25rem;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:0.75rem;color:#fff;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:0.12em;cursor:pointer;">Close</button>
+                </div>
+            </div>
+
+            <!-- Summary cards -->
+            <div id="admin-summary" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:0.75rem;margin-bottom:2rem;"></div>
+
+            <!-- Log table -->
+            <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:1.25rem;overflow:hidden;">
+                <div style="padding:1rem 1.5rem;border-bottom:1px solid rgba(255,255,255,0.06);">
+                    <p style="font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:0.2em;color:rgba(255,255,255,0.4);">Purchase Log</p>
+                </div>
+                <div style="overflow-x:auto;">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Time</th>
+                                <th>Product</th>
+                                <th>Code</th>
+                                <th>Orig. Price</th>
+                                <th>Discounted</th>
+                                <th>Savings</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-log-body"></tbody>
+                    </table>
+                </div>
+            </div>
+            <p style="margin-top:1.5rem;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:rgba(255,255,255,0.2);text-align:center;">Data stored locally in this browser. Use Export CSV to save permanently.</p>
+        </div>
+    </div>
+
+    <!-- Hidden admin trigger: click footer copyright 5× -->
+    <script>
+    (function(){
+        let clicks = 0, timer;
+        document.querySelector('.pt-10.border-t').addEventListener('click', function(){
+            clicks++;
+            clearTimeout(timer);
+            timer = setTimeout(()=>clicks=0, 2000);
+            if(clicks >= 5){ clicks=0; openAdmin(); }
+        });
+    })();
+    </script>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/40728957884" target="_blank" class="fixed bottom-6 right-6 z-[999] group flex items-center gap-3">
+        <span class="hidden sm:inline-flex px-4 py-2 rounded-2xl bg-black/70 backdrop-blur-xl border border-white/10 text-[10px] font-black uppercase tracking-[0.3em] text-gray-200 shadow-2xl group-hover:border-cyan-500/30 transition-all">Support Desk</span>
+        <span class="w-14 h-14 rounded-2xl bg-emerald-500 flex items-center justify-center shadow-2xl border border-white/10 group-hover:scale-[1.04] transition-transform">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="26" height="26" fill="#fff"><path d="M16 2.5C8.55 2.5 2.5 8.55 2.5 16c0 2.63.76 5.18 2.2 7.38L3.5 29.5l6.32-1.17A13.44 13.44 0 0 0 16 29.5c7.45 0 13.5-6.05 13.5-13.5S23.45 2.5 16 2.5Z" opacity="0.2"/><path d="M16 6.3c-5.36 0-9.7 4.34-9.7 9.7 0 1.9.55 3.75 1.6 5.33l-1.04 3.77 3.86-1.01A9.64 9.64 0 0 0 16 25.7c5.36 0 9.7-4.34 9.7-9.7S21.36 6.3 16 6.3Zm5.66 13.35c-.24.67-1.18 1.23-1.95 1.39-.52.11-1.19.2-3.46-.75-2.9-1.21-4.76-4.18-4.9-4.38-.13-.2-1.17-1.56-1.17-2.98 0-1.42.74-2.12 1.01-2.41.27-.28.6-.35.8-.35h.58c.18 0 .43-.07.67.51.24.58.81 2 .88 2.15.07.15.11.33.02.53-.09.2-.13.33-.27.51-.13.18-.28.4-.4.54-.13.15-.26.31-.11.58.15.27.66 1.08 1.42 1.75.98.87 1.81 1.14 2.08 1.27.27.13.43.11.59-.07.16-.18.67-.78.85-1.05.18-.27.35-.22.59-.13.24.09 1.53.72 1.79.85.26.13.43.2.49.31.07.11.07.64-.18 1.31Z"/></svg>
+        </span>
+    </a>
+
+    <!-- Logic -->
+    <script>
+        let currentProduct = null;
+        
+        const PHP_GATEWAY_URL = "https://www.oregonrestore.com/infocus/pay.php";
+        const RON_RATE = 4.29;
+        const DISCOUNT = 0.10; // 10%
+
+        // ── 15 Referral codes (all give 10% off) ──────────────────────────
+        const REFERRAL_CODES = new Set([
+            "FRIEND10", "SAVE10", "VIP10", "DEAL10", "PROMO10",
+            "REF2026",  "TECH10",  "MD10",   "MOBILE10","ELITE10",
+            "SHARE10",  "BONUS10", "DIRECT10","TRUST10", "LAUNCH10"
+        ]);
+
+        // ── Referral state for the open modal ─────────────────────────────
+        let activeCode = null; // validated code currently in modal
+
+        function validateCode(raw) {
+            return REFERRAL_CODES.has(raw.trim().toUpperCase()) ? raw.trim().toUpperCase() : null;
+        }
+
+        function applyModalCode(raw) {
+            const code = validateCode(raw);
+            const input  = document.getElementById('modal-ref-input');
+            const badge  = document.getElementById('modal-ref-badge');
+            const dline  = document.getElementById('modal-discount-line');
+
+            if (!raw.trim()) {
+                input.classList.remove('valid','invalid');
+                badge.style.display = 'none';
+                dline.style.display = 'none';
+                activeCode = null;
+                refreshModalPrices(false);
+                return;
+            }
+            if (code) {
+                input.classList.add('valid'); input.classList.remove('invalid');
+                badge.textContent = '−10%'; badge.className = 'ref-badge ok'; badge.style.display = '';
+                dline.style.display = '';
+                activeCode = code;
+                refreshModalPrices(true);
+            } else {
+                input.classList.add('invalid'); input.classList.remove('valid');
+                badge.textContent = '✕'; badge.className = 'ref-badge err'; badge.style.display = '';
+                dline.style.display = 'none';
+                activeCode = null;
+                refreshModalPrices(false);
+            }
+        }
+
+        function refreshModalPrices(discounted) {
+            if (!currentProduct) return;
+            const origPrice = currentProduct.price;
+            const finalPrice = discounted ? Math.round(origPrice * (1 - DISCOUNT) * 100) / 100 : origPrice;
+            const ronPrice   = Math.round(finalPrice * RON_RATE);
+
+            if (discounted) {
+                document.getElementById('modal-price').innerHTML =
+                    `<span class="price-original">$${origPrice.toLocaleString()}</span> $${finalPrice.toLocaleString()}`;
+                document.getElementById('modal-price-ron').innerHTML =
+                    `<span style="text-decoration:line-through;opacity:.4;">≈ ${Math.round(origPrice*RON_RATE).toLocaleString()} RON</span>&nbsp; ≈ ${ronPrice.toLocaleString()} RON`;
+            } else {
+                document.getElementById('modal-price').innerText = `$${origPrice.toLocaleString()}`;
+                document.getElementById('modal-price-ron').innerText = `≈ ${Math.round(origPrice*RON_RATE).toLocaleString()} RON`;
+            }
+
+            const amountCents = discounted
+                ? Math.round(currentProduct.amountCents * (1 - DISCOUNT))
+                : currentProduct.amountCents;
+            document.getElementById('buy-now-link').href =
+                `${PHP_GATEWAY_URL}?amount=${amountCents}&product=${encodeURIComponent(currentProduct.name)}${activeCode ? '&ref='+activeCode : ''}`;
+        }
+
+        // ── Purchase log (localStorage) ───────────────────────────────────
+        function getLogs() {
+            try { return JSON.parse(localStorage.getItem('md_ref_logs') || '[]'); } catch { return []; }
+        }
+        function saveLogs(logs) {
+            localStorage.setItem('md_ref_logs', JSON.stringify(logs));
+        }
+        function logPurchase() {
+            if (!currentProduct || !activeCode) return; // only log when a valid code was used
+            const logs = getLogs();
+            logs.unshift({
+                ts:      new Date().toISOString(),
+                product: currentProduct.name,
+                code:    activeCode,
+                origUSD: currentProduct.price,
+                discUSD: Math.round(currentProduct.price * (1 - DISCOUNT) * 100) / 100,
+                savings: Math.round(currentProduct.price * DISCOUNT * 100) / 100
+            });
+            saveLogs(logs);
+        }
+
+        // ── Admin panel ───────────────────────────────────────────────────
+        function openAdmin() {
+            document.getElementById('admin-panel').style.display = 'block';
+            renderAdmin();
+        }
+        function closeAdmin() {
+            document.getElementById('admin-panel').style.display = 'none';
+        }
+        function renderAdmin() {
+            const logs = getLogs();
+
+            // Summary by code
+            const summary = {};
+            REFERRAL_CODES.forEach(c => summary[c] = { uses: 0, savings: 0 });
+            logs.forEach(l => {
+                if (summary[l.code]) {
+                    summary[l.code].uses++;
+                    summary[l.code].savings += l.savings;
+                }
+            });
+            const sumEl = document.getElementById('admin-summary');
+            sumEl.innerHTML = [...REFERRAL_CODES].map(c => `
+                <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:1rem;padding:0.85rem 1rem;">
+                    <p style="font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:0.15em;color:rgba(6,182,212,0.9);margin-bottom:4px;">${c}</p>
+                    <p style="font-size:1.1rem;font-weight:900;color:#fff;">${summary[c].uses} <span style="font-size:9px;color:rgba(255,255,255,0.3);font-weight:700;">uses</span></p>
+                    <p style="font-size:9px;color:rgba(34,197,94,0.8);font-weight:700;">$${summary[c].savings.toFixed(2)} saved</p>
+                </div>
+            `).join('');
+
+            // Log table
+            const tbody = document.getElementById('admin-log-body');
+            if (!logs.length) {
+                tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;padding:2rem;color:rgba(255,255,255,0.2);">No referral purchases recorded yet.</td></tr>`;
+                return;
+            }
+            tbody.innerHTML = logs.map((l,i) => `
+                <tr>
+                    <td style="color:rgba(255,255,255,0.3);">${logs.length - i}</td>
+                    <td>${new Date(l.ts).toLocaleString()}</td>
+                    <td style="font-weight:700;color:#fff;">${l.product}</td>
+                    <td><span style="padding:2px 8px;background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.2);border-radius:99px;color:#06b6d4;font-weight:900;">${l.code}</span></td>
+                    <td>$${l.origUSD.toLocaleString()}</td>
+                    <td style="color:#22c55e;font-weight:700;">$${l.discUSD.toLocaleString()}</td>
+                    <td style="color:#a855f7;font-weight:700;">−$${l.savings.toFixed(2)}</td>
+                </tr>
+            `).join('');
+        }
+        function clearLogs() {
+            if (confirm('Clear all referral logs? This cannot be undone.')) {
+                saveLogs([]);
+                renderAdmin();
+            }
+        }
+        function exportCSV() {
+            const logs = getLogs();
+            if (!logs.length) { alert('No data to export.'); return; }
+            const rows = [['#','Timestamp','Product','Code','Original USD','Discounted USD','Savings USD']];
+            logs.forEach((l,i) => rows.push([logs.length-i, l.ts, `"${l.product}"`, l.code, l.origUSD, l.discUSD, l.savings.toFixed(2)]));
+            const csv = rows.map(r=>r.join(',')).join('\n');
+            const a = document.createElement('a');
+            a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+            a.download = `mobiledirect_referrals_${new Date().toISOString().slice(0,10)}.csv`;
+            a.click();
+        }
+
+        // ── Product data ──────────────────────────────────────────────────
+        const products = [
+            { 
+                id: 100, type: 'phones', name: "Samsung Galaxy S26 Ultra", brand: "Samsung", price: 1999, tag: "Only 3 Left",
+                amountCents: 199900,
+                colors: ["#2d3436", "#ecf0f1", "#0984e3"],
+                images: ["img/261.jpg", "img/262.jpg", "img/263.jpg"],
+                description: [
+                    "The definitive flagship of 2026. This limited model features 1TB Storage and 16GB RAM for ultimate performance.",
+                    "We currently have 3 black units on hand for immediate global dispatch.",
+                    "Featuring a 320MP Pro-Grade sensor and the Snapdragon 8 Gen 5 Elite architecture."
+                ],
+                detailed: { 
+                    "Processor": "Snapdragon 8 Gen 5 Elite (2nm)", 
+                    "Memory": "16GB LPDDR6", 
+                    "Storage": "1TB UFS 5.0 Pro",
+                    "Display": "6.9\" Dynamic AMOLED 3X (3200 nits)", 
+                    "Camera": "320MP Ultra-Vision + 50MP 10x Optical", 
+                    "Battery": "5500mAh Solid-State Tech", 
+                    "Connectivity": "Direct-to-Cell Satellite Link"
+                } 
+            },
+            {
+              id: 0,
+              type: 'phones',
+              name: "Samsung Galaxy Z TriFold",
+              brand: "Samsung",
+              price: 3799,
+              tag: "Elite Edition",
+              amountCents: 379900,
+              colors: ["#0f0f10"],
+              images: ["img/samtri1.jpg", "img/samtri2.jpg", "img/samtri3.jpg"],
+              description: ["Samsung’s first-ever tri-fold flagship transforms into a 10.0-inch tablet via a dual-hinge design."],
+              detailed: { "Processor": "Snapdragon 8 Elite", "Memory": "16GB", "Display": "10.0\" AMOLED", "Status": "Verified Hub Stock" }
+            },
+            {
+              id: 5,
+              type: 'phones',
+              name: "Huawei Mate XT Ultimate",
+              brand: "Huawei",
+              price: 3499,
+              tag: "Limited Stock",
+              amountCents: 349900,
+              colors: ["#000000", "#8b1e2d"],
+              images: ["/img/mate1.jpg", "/img/mate2.jpg", "/img/mate3.jpg"],
+              description: ["Triple-screen innovation from Huawei with a 10.2-inch flexible OLED."],
+              detailed: { "Processor": "Kirin 9010", "Display": "10.2\" OLED", "RAM": "16GB" }
+            },
+            { 
+                id: 1, type: 'phones', name: "Xiaomi 17 Ultra Leica", brand: "Xiaomi", price: 999, tag: "16/512GB",
+                amountCents: 99900,
+                colors: ["#1e272e", "#ecf0f1"],
+                images: ["/img/17ultra3.jpg", "/img/17ultra2.jpg", "/img/17ultra1.jpg"],
+                description: ["Leica Edition 2026. 1-inch retractable Summilux lens."],
+                detailed: { "Processor": "Snapdragon 8 Elite", "Camera": "200MP Summilux" } 
+            },
+            { 
+                id: 2, type: 'phones', name: "Oppo Find X8 Ultra", brand: "Oppo", price: 862, tag: "Pro 12/256GB",
+                amountCents: 86200,
+                colors: ["#2d3436", "#0984e3"],
+                images: ["/img/x8ultra1.jpg", "/img/x8ultra2.jpg", "/img/x8ultra3.jpg"],
+                description: ["Dual-periscope breakthrough with Hasselblad Master calibration."],
+                detailed: { "Processor": "Dimensity 9400", "Battery": "5910mAh" } 
+            },
+            { 
+                id: 3, type: 'phones', name: "Vivo X200 Ultra", brand: "Vivo", price: 943, tag: "ZEISS 12/256GB",
+                amountCents: 94300,
+                colors: ["#1a1a1a", "#dfe6e9"],
+                images: ["/img/vivox2001.jpg", "/img/vivox2002.jpg", "/img/vivox2003.jpg"],
+                description: ["Vivo X200 Ultra redefines clarity with its 200MP ZEISS APO periscope telephoto lens."],
+                detailed: { "Processor": "Dimensity 9400 Elite", "Display": "6.78\" 1.5K LTPO", "Battery": "6000mAh" } 
+            },
+            { 
+                id: 4, type: 'phones', name: "Honor Magic 8 Pro", brand: "Honor", price: 1584, tag: "Global 512GB",
+                amountCents: 158400,
+                colors: ["#1a1a1a", "#00d2d3"],
+                images: ["/img/hm81.jpg", "/img/hm82.jpg", "/img/hm83.jpg"],
+                description: ["Flagship for the intelligence age, featuring a native on-device Large Language Model."],
+                detailed: { "Processor": "Snapdragon 8 Elite", "Display": "Quad-Curved LTPO", "Battery": "5850mAh" } 
+            },
+            { 
+                id: 6, type: 'phones', name: "Huawei Pura 80 Ultra", brand: "Huawei", price: 1254, tag: "Innovation",
+                amountCents: 125400,
+                colors: ["#d63031", "#1a1a1a"],
+                images: ["/img/pura80u1.jpg", "/img/pura80u2.jpg", "/img/pura80u3.jpg"],
+                description: ["Mechanical marvel featuring a physical retractable 1-inch Summilux lens system."],
+                detailed: { "Processor": "Kirin 9100", "Display": "6.8\" Kunlun OLED", "Camera": "1\" 50MP RYYB" } 
+            },
+            { 
+                id: 10, type: 'phones', name: "POCO F8 Ultra", brand: "POCO", price: 680, tag: "Value Beast",
+                amountCents: 68000,
+                colors: ["#f39c12", "#1a1a1a"],
+                images: ["/img/pocof8u1.jpg", "/img/pocof8u2.jpg", "/img/pocof8u3.jpg"],
+                description: ["Hardware disruptor delivering flagship-tier benchmark scores at accessible costs."],
+                detailed: { "Processor": "Snapdragon 8 Elite", "Display": "6.67\" 1.5K AMOLED", "Refresh": "144Hz" } 
+            },
+            { 
+                id: 15, type: 'watches', name: "Huawei Watch GT 6 Pro", brand: "Huawei", price: 365, tag: "Premium Golf",
+                amountCents: 36500,
+                colors: ["#2c3e50", "#95a5a6"],
+                images: ["/img/gt6pro1.jpg", "/img/gt6pro2.jpg", "/img/gt6pro3.jpg"],
+                description: ["High-res 3D Golf maps and 40m Free-diving certification."],
+                detailed: { "Material": "Titanium/Ceramic", "Battery": "14 Days" } 
+            },
+            { 
+                id: 16, type: 'watches', name: "Huawei Watch Fit 4", brand: "Huawei", price: 209, tag: "Fashion Tech",
+                amountCents: 20900,
+                colors: ["#8e44ad", "#e91e63"],
+                images: ["/img/hwfit4pro1.jpg", "/img/hwfit4pro2.jpg", "/img/hwfit4pro3.jpg"],
+                description: ["Ultra-slim profile housing a high-resolution rectangular AMOLED display."],
+                detailed: { "Chip": "Cortex M4", "Display": "1.82\" AMOLED", "Weight": "26g" } 
+            },
+            { 
+                id: 19, type: 'watches', name: "Honor Watch 5 Ultra", brand: "Honor", price: 314, tag: "Survival",
+                amountCents: 31400,
+                colors: ["#1e272e", "#f39c12"],
+                images: ["/img/hwatch5u1.jpg", "/img/hwatch5u2.jpg", "/img/hwatch5u3.jpg"],
+                description: ["Built for survival with offline topographic maps and satellite SOS link."],
+                detailed: { "Display": "2500nit AMOLED", "Water": "10 ATM", "Battery": "14 Days" } 
+            },
+            { 
+                id: 21, type: 'tablets', name: "RedMagic Astra", brand: "RedMagic", price: 680, tag: "Pro Gaming",
+                amountCents: 68000,
+                colors: ["#1a1a1a", "#c0392b"],
+                images: ["/img/astra3.jpg", "/img/astra2.jpg", "/img/astra1.jpg"],
+                description: ["Active turbo fan cooling with 165Hz esports display."],
+                detailed: { "Processor": "Snapdragon 8 Gen 3", "Refresh": "165Hz", "Battery": "10,100mAh" } 
+            }
+        ];
+
+        const grid = document.getElementById('product-grid');
+        const modal = document.getElementById('product-modal');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function renderProducts(cat = 'all') {
+            grid.innerHTML = '';
+            const filtered = cat === 'all' ? products : products.filter(p => p.type === cat);
+            
+            filtered.forEach(p => {
+                const isPreorder = p.tag.toLowerCase() === 'preorder';
+                const imageSrc = p.images?.[0] || "https://placehold.co/400x400/111/444?text=Device";
+                const ronPrice = Math.round(p.price * RON_RATE);
+
+                grid.innerHTML += `
+                    <div class="glass-card-hover glass-card p-6 flex flex-col h-full cursor-pointer group" onclick="openModal(${p.id})">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-3 py-1 rounded-full ${isPreorder ? 'bg-purple-500 text-white shadow-[0_0_15px_#a855f7]' : 'bg-cyan-500/10 text-cyan-400'} text-[9px] font-black uppercase tracking-wider border border-white/5">${p.tag}</span>
+                            <div class="flex gap-1.5 p-1 bg-black/40 rounded-full border border-white/5">
+                                ${p.colors ? p.colors.map(c => `<div class="color-swatch" style="background-color: ${c}"></div>`).join('') : ''}
+                            </div>
+                        </div>
+                        <div class="aspect-square bg-zinc-900/50 rounded-2xl mb-6 flex items-center justify-center overflow-hidden relative border border-white/5 shadow-inner">
+                            <img src="${imageSrc}" class="product-img group-hover:scale-110" onerror="this.src='https://placehold.co/400x400/111/444?text=Device'">
+                        </div>
+                        <div class="flex-grow">
+                            <p class="text-cyan-500 text-[10px] font-black uppercase tracking-widest mb-1 opacity-70">${p.brand}</p>
+                            <h3 class="text-lg font-bold mb-2 tracking-tight group-hover:text-cyan-400 transition-colors leading-tight text-white">${p.name}</h3>
+                            <div class="flex gap-2 mb-4">
+                                ${p.detailed.Memory ? `<span class="px-2 py-1 bg-white/5 border border-white/10 rounded-lg text-[8px] font-bold text-gray-400 uppercase tracking-widest">${p.detailed.Memory.split(' ')[0]}</span>` : ''}
+                                ${p.detailed.Storage ? `<span class="px-2 py-1 bg-white/5 border border-white/10 rounded-lg text-[8px] font-bold text-gray-400 uppercase tracking-widest">${p.detailed.Storage.split(' ')[0]}</span>` : ''}
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between pt-5 border-t border-white/5">
+                            <div class="flex flex-col">
+                                <span class="text-2xl price-text text-white tracking-tighter">$${p.price.toLocaleString()}</span>
+                                <span class="text-[10px] text-gray-500 font-bold uppercase tracking-widest mt-1">≈ ${ronPrice.toLocaleString()} RON</span>
+                            </div>
+                            <button class="px-4 py-2 rounded-xl bg-white text-black text-[10px] font-black uppercase tracking-widest hover:bg-cyan-500 transition-all">CHECKOUT</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function setView(index) {
+            document.getElementById('current-view').innerText = index;
+            document.querySelectorAll('.thumb-btn').forEach((btn, i) => {
+                i === index - 1 ? btn.classList.add('active') : btn.classList.remove('active');
+            });
+            const modalImg = document.getElementById('modal-main-img');
+            if (currentProduct && currentProduct.images?.[index - 1]) {
+                modalImg.src = currentProduct.images[index - 1];
+            }
+        }
+
+        function openModal(id) {
+            const p = products.find(prod => prod.id === id);
+            if (!p) return;
+            currentProduct = p;
+            activeCode = null;
+
+            const ronPrice = Math.round(p.price * RON_RATE);
+
+            document.getElementById('modal-title').innerText = p.name;
+            document.getElementById('modal-brand').innerText = p.brand;
+            document.getElementById('modal-price').innerText = `$${p.price.toLocaleString()}`;
+            document.getElementById('modal-price-ron').innerText = `≈ ${ronPrice.toLocaleString()} RON`;
+            document.getElementById('modal-desc').innerHTML = p.description.map(d => `<p>${d}</p>`).join('');
+
+            // Reset referral field
+            const refInput = document.getElementById('modal-ref-input');
+            refInput.value = '';
+            refInput.classList.remove('valid','invalid');
+            document.getElementById('modal-ref-badge').style.display = 'none';
+            document.getElementById('modal-discount-line').style.display = 'none';
+
+            const colorCont = document.getElementById('modal-color-swatches');
+            colorCont.innerHTML = (p.colors || []).map(c => `<div class="w-4 h-4 rounded-full border border-white/20" style="background-color: ${c}"></div>`).join('');
+
+            const specsCont = document.getElementById('modal-specs');
+            specsCont.innerHTML = Object.entries(p.detailed).map(([key, val]) => `
+                <div class="bg-white/5 p-4 rounded-2xl border border-white/5 flex flex-col gap-0.5">
+                    <p class="text-[8px] uppercase font-black text-gray-600 tracking-widest">${key.replace('_', ' ')}</p>
+                    <p class="text-[11px] font-bold text-gray-200">${val}</p>
+                </div>
+            `).join('');
+
+            const stockStatus = document.getElementById('modal-stock-status');
+            const isPre = p.tag.toLowerCase() === 'preorder';
+            stockStatus.innerHTML = `<span class="w-1.5 h-1.5 rounded-full ${isPre ? 'bg-purple-500 shadow-[0_0_10px_#a855f7]' : 'bg-green-500 shadow-[0_0_10px_#22c55e]'}"></span> ${isPre ? 'Preorder Active' : 'Ready to Ship'}`;
+            stockStatus.className = `text-[10px] font-black uppercase tracking-widest flex items-center gap-2 ${isPre ? 'text-purple-400' : 'text-green-500'}`;
+
+            for(let i=1; i<=3; i++) {
+                const img = document.querySelector(`#thumb-${i} img`);
+                if(img) img.src = p.images?.[i-1] || "https://placehold.co/100x100/111/444";
+            }
+
+            // Construct secure PHP URL (no discount yet)
+            document.getElementById('buy-now-link').href = `${PHP_GATEWAY_URL}?amount=${p.amountCents}&product=${encodeURIComponent(p.name)}`;
+
+            modal.classList.remove('hidden-modal');
+            document.body.style.overflow = 'hidden';
+            setView(1);
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden-modal');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.className = "filter-btn px-8 py-3 rounded-2xl text-[10px] uppercase tracking-widest font-black bg-white/5 border border-white/10 text-gray-400 hover:bg-white/10");
+                btn.className = "filter-btn px-8 py-3 rounded-2xl text-[10px] uppercase tracking-widest font-black bg-cyan-500 text-black shadow-lg";
+                renderProducts(btn.dataset.cat);
+            });
+        });
+
+        document.getElementById('menu-toggle').addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        window.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeModal(); });
+        
+        renderProducts();
+    </script>
+</body>
+</html>
