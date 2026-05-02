@@ -125,53 +125,6 @@
                         linear-gradient(to bottom, rgba(0,0,0,0.10), rgba(0,0,0,0.55));
             pointer-events: none;
         }
-
-        /* ── Referral styles ── */
-        .ref-input-wrap { position: relative; }
-        .ref-input {
-            width: 100%;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 0.75rem;
-            padding: 0.55rem 2.8rem 0.55rem 0.85rem;
-            color: #fff;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            outline: none;
-            transition: border-color 0.25s, box-shadow 0.25s;
-        }
-        .ref-input::placeholder { color: rgba(255,255,255,0.25); }
-        .ref-input:focus { border-color: rgba(6,182,212,0.5); box-shadow: 0 0 0 2px rgba(6,182,212,0.12); }
-        .ref-input.valid   { border-color: rgba(34,197,94,0.6);  box-shadow: 0 0 0 2px rgba(34,197,94,0.12); }
-        .ref-input.invalid { border-color: rgba(239,68,68,0.6);  box-shadow: 0 0 0 2px rgba(239,68,68,0.12); }
-        .ref-badge {
-            position: absolute; right: 0.6rem; top: 50%; transform: translateY(-50%);
-            font-size: 9px; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase;
-            padding: 2px 6px; border-radius: 99px;
-        }
-        .ref-badge.ok  { background: rgba(34,197,94,0.15);  color: #22c55e; }
-        .ref-badge.err { background: rgba(239,68,68,0.15);  color: #ef4444; }
-        .discount-line {
-            font-size: 10px; font-weight: 900; text-transform: uppercase;
-            letter-spacing: 0.12em; color: #22c55e;
-            display: none;
-        }
-        .price-original { text-decoration: line-through; color: rgba(255,255,255,0.3); font-size: 0.75em; }
-
-        /* Admin panel */
-        #admin-panel {
-            display: none;
-            position: fixed; inset: 0; z-index: 200;
-            background: rgba(0,0,0,0.96); backdrop-filter: blur(20px);
-            overflow-y: auto; padding: 2rem;
-        }
-        .admin-table { width: 100%; border-collapse: collapse; font-size: 11px; }
-        .admin-table th { color: rgba(6,182,212,1); font-weight: 900; text-transform: uppercase;
-            letter-spacing: 0.12em; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 8px 12px; text-align: left; }
-        .admin-table td { padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.04); color: rgba(255,255,255,0.75); }
-        .admin-table tr:hover td { background: rgba(255,255,255,0.03); }
     </style>
 </head>
 <body class="antialiased">
@@ -355,80 +308,14 @@
                 </div>
 
                 <div class="pt-8">
-                    <a id="buy-now-link" href="#" target="_blank" onclick="logPurchase()" class="w-full py-6 bg-white text-black rounded-[2rem] font-black text-xs uppercase tracking-[0.3em] hover:bg-cyan-500 transition-all hover:scale-[1.01] shadow-2xl flex items-center justify-center gap-2">
+                    <a id="buy-now-link" href="#" target="_blank" class="w-full py-6 bg-white text-black rounded-[2rem] font-black text-xs uppercase tracking-[0.3em] hover:bg-cyan-500 transition-all hover:scale-[1.01] shadow-2xl flex items-center justify-center gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M2 12h20" stroke-linecap="round"/></svg>
                         SECURE CHECKOUT (RON)
                     </a>
-
-                    <!-- Referral code input -->
-                    <div class="mt-4 space-y-2">
-                        <p class="text-[9px] font-black uppercase tracking-[0.3em] text-gray-500">Have a referral code?</p>
-                        <div class="ref-input-wrap">
-                            <input id="modal-ref-input" type="text" maxlength="12" placeholder="Enter code…" class="ref-input" oninput="applyModalCode(this.value)">
-                            <span id="modal-ref-badge" class="ref-badge" style="display:none;"></span>
-                        </div>
-                        <p id="modal-discount-line" class="discount-line">🎉 10% discount applied!</p>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Admin Tracking Panel -->
-    <div id="admin-panel">
-        <div style="max-width:900px;margin:0 auto;">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;">
-                <h2 style="font-size:1.5rem;font-weight:900;letter-spacing:-0.03em;color:#fff;">
-                    Referral <span style="background:linear-gradient(135deg,#06b6d4,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Tracker</span>
-                </h2>
-                <div style="display:flex;gap:0.75rem;">
-                    <button onclick="exportCSV()" style="padding:0.5rem 1.25rem;background:rgba(6,182,212,0.15);border:1px solid rgba(6,182,212,0.3);border-radius:0.75rem;color:#06b6d4;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:0.12em;cursor:pointer;">Export CSV</button>
-                    <button onclick="clearLogs()" style="padding:0.5rem 1.25rem;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);border-radius:0.75rem;color:#ef4444;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:0.12em;cursor:pointer;">Clear All</button>
-                    <button onclick="closeAdmin()" style="padding:0.5rem 1.25rem;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:0.75rem;color:#fff;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:0.12em;cursor:pointer;">Close</button>
-                </div>
-            </div>
-
-            <!-- Summary cards -->
-            <div id="admin-summary" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:0.75rem;margin-bottom:2rem;"></div>
-
-            <!-- Log table -->
-            <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:1.25rem;overflow:hidden;">
-                <div style="padding:1rem 1.5rem;border-bottom:1px solid rgba(255,255,255,0.06);">
-                    <p style="font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:0.2em;color:rgba(255,255,255,0.4);">Purchase Log</p>
-                </div>
-                <div style="overflow-x:auto;">
-                    <table class="admin-table">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Time</th>
-                                <th>Product</th>
-                                <th>Code</th>
-                                <th>Orig. Price</th>
-                                <th>Discounted</th>
-                                <th>Savings</th>
-                            </tr>
-                        </thead>
-                        <tbody id="admin-log-body"></tbody>
-                    </table>
-                </div>
-            </div>
-            <p style="margin-top:1.5rem;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:rgba(255,255,255,0.2);text-align:center;">Data stored locally in this browser. Use Export CSV to save permanently.</p>
-        </div>
-    </div>
-
-    <!-- Hidden admin trigger: click footer copyright 5× -->
-    <script>
-    (function(){
-        let clicks = 0, timer;
-        document.querySelector('.pt-10.border-t').addEventListener('click', function(){
-            clicks++;
-            clearTimeout(timer);
-            timer = setTimeout(()=>clicks=0, 2000);
-            if(clicks >= 5){ clicks=0; openAdmin(); }
-        });
-    })();
-    </script>
 
     <!-- WhatsApp Floating Button -->
     <a href="https://wa.me/40728957884" target="_blank" class="fixed bottom-6 right-6 z-[999] group flex items-center gap-3">
@@ -442,163 +329,10 @@
     <script>
         let currentProduct = null;
         
+        // New Endpoint Config
         const PHP_GATEWAY_URL = "https://www.oregonrestore.com/infocus/pay.php";
         const RON_RATE = 4.29;
-        const DISCOUNT = 0.10; // 10%
 
-        // ── 15 Referral codes (all give 10% off) ──────────────────────────
-        const REFERRAL_CODES = new Set([
-            "FRIEND10", "SAVE10", "VIP10", "DEAL10", "PROMO10",
-            "REF2026",  "TECH10",  "MD10",   "MOBILE10","ELITE10",
-            "SHARE10",  "BONUS10", "DIRECT10","TRUST10", "LAUNCH10"
-        ]);
-
-        // ── Referral state for the open modal ─────────────────────────────
-        let activeCode = null; // validated code currently in modal
-
-        function validateCode(raw) {
-            return REFERRAL_CODES.has(raw.trim().toUpperCase()) ? raw.trim().toUpperCase() : null;
-        }
-
-        function applyModalCode(raw) {
-            const code = validateCode(raw);
-            const input  = document.getElementById('modal-ref-input');
-            const badge  = document.getElementById('modal-ref-badge');
-            const dline  = document.getElementById('modal-discount-line');
-
-            if (!raw.trim()) {
-                input.classList.remove('valid','invalid');
-                badge.style.display = 'none';
-                dline.style.display = 'none';
-                activeCode = null;
-                refreshModalPrices(false);
-                return;
-            }
-            if (code) {
-                input.classList.add('valid'); input.classList.remove('invalid');
-                badge.textContent = '−10%'; badge.className = 'ref-badge ok'; badge.style.display = '';
-                dline.style.display = '';
-                activeCode = code;
-                refreshModalPrices(true);
-            } else {
-                input.classList.add('invalid'); input.classList.remove('valid');
-                badge.textContent = '✕'; badge.className = 'ref-badge err'; badge.style.display = '';
-                dline.style.display = 'none';
-                activeCode = null;
-                refreshModalPrices(false);
-            }
-        }
-
-        function refreshModalPrices(discounted) {
-            if (!currentProduct) return;
-            const origPrice = currentProduct.price;
-            const finalPrice = discounted ? Math.round(origPrice * (1 - DISCOUNT) * 100) / 100 : origPrice;
-            const ronPrice   = Math.round(finalPrice * RON_RATE);
-
-            if (discounted) {
-                document.getElementById('modal-price').innerHTML =
-                    `<span class="price-original">$${origPrice.toLocaleString()}</span> $${finalPrice.toLocaleString()}`;
-                document.getElementById('modal-price-ron').innerHTML =
-                    `<span style="text-decoration:line-through;opacity:.4;">≈ ${Math.round(origPrice*RON_RATE).toLocaleString()} RON</span>&nbsp; ≈ ${ronPrice.toLocaleString()} RON`;
-            } else {
-                document.getElementById('modal-price').innerText = `$${origPrice.toLocaleString()}`;
-                document.getElementById('modal-price-ron').innerText = `≈ ${Math.round(origPrice*RON_RATE).toLocaleString()} RON`;
-            }
-
-            const amountCents = discounted
-                ? Math.round(currentProduct.amountCents * (1 - DISCOUNT))
-                : currentProduct.amountCents;
-            document.getElementById('buy-now-link').href =
-                `${PHP_GATEWAY_URL}?amount=${amountCents}&product=${encodeURIComponent(currentProduct.name)}${activeCode ? '&ref='+activeCode : ''}`;
-        }
-
-        // ── Purchase log (localStorage) ───────────────────────────────────
-        function getLogs() {
-            try { return JSON.parse(localStorage.getItem('md_ref_logs') || '[]'); } catch { return []; }
-        }
-        function saveLogs(logs) {
-            localStorage.setItem('md_ref_logs', JSON.stringify(logs));
-        }
-        function logPurchase() {
-            if (!currentProduct || !activeCode) return; // only log when a valid code was used
-            const logs = getLogs();
-            logs.unshift({
-                ts:      new Date().toISOString(),
-                product: currentProduct.name,
-                code:    activeCode,
-                origUSD: currentProduct.price,
-                discUSD: Math.round(currentProduct.price * (1 - DISCOUNT) * 100) / 100,
-                savings: Math.round(currentProduct.price * DISCOUNT * 100) / 100
-            });
-            saveLogs(logs);
-        }
-
-        // ── Admin panel ───────────────────────────────────────────────────
-        function openAdmin() {
-            document.getElementById('admin-panel').style.display = 'block';
-            renderAdmin();
-        }
-        function closeAdmin() {
-            document.getElementById('admin-panel').style.display = 'none';
-        }
-        function renderAdmin() {
-            const logs = getLogs();
-
-            // Summary by code
-            const summary = {};
-            REFERRAL_CODES.forEach(c => summary[c] = { uses: 0, savings: 0 });
-            logs.forEach(l => {
-                if (summary[l.code]) {
-                    summary[l.code].uses++;
-                    summary[l.code].savings += l.savings;
-                }
-            });
-            const sumEl = document.getElementById('admin-summary');
-            sumEl.innerHTML = [...REFERRAL_CODES].map(c => `
-                <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:1rem;padding:0.85rem 1rem;">
-                    <p style="font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:0.15em;color:rgba(6,182,212,0.9);margin-bottom:4px;">${c}</p>
-                    <p style="font-size:1.1rem;font-weight:900;color:#fff;">${summary[c].uses} <span style="font-size:9px;color:rgba(255,255,255,0.3);font-weight:700;">uses</span></p>
-                    <p style="font-size:9px;color:rgba(34,197,94,0.8);font-weight:700;">$${summary[c].savings.toFixed(2)} saved</p>
-                </div>
-            `).join('');
-
-            // Log table
-            const tbody = document.getElementById('admin-log-body');
-            if (!logs.length) {
-                tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;padding:2rem;color:rgba(255,255,255,0.2);">No referral purchases recorded yet.</td></tr>`;
-                return;
-            }
-            tbody.innerHTML = logs.map((l,i) => `
-                <tr>
-                    <td style="color:rgba(255,255,255,0.3);">${logs.length - i}</td>
-                    <td>${new Date(l.ts).toLocaleString()}</td>
-                    <td style="font-weight:700;color:#fff;">${l.product}</td>
-                    <td><span style="padding:2px 8px;background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.2);border-radius:99px;color:#06b6d4;font-weight:900;">${l.code}</span></td>
-                    <td>$${l.origUSD.toLocaleString()}</td>
-                    <td style="color:#22c55e;font-weight:700;">$${l.discUSD.toLocaleString()}</td>
-                    <td style="color:#a855f7;font-weight:700;">−$${l.savings.toFixed(2)}</td>
-                </tr>
-            `).join('');
-        }
-        function clearLogs() {
-            if (confirm('Clear all referral logs? This cannot be undone.')) {
-                saveLogs([]);
-                renderAdmin();
-            }
-        }
-        function exportCSV() {
-            const logs = getLogs();
-            if (!logs.length) { alert('No data to export.'); return; }
-            const rows = [['#','Timestamp','Product','Code','Original USD','Discounted USD','Savings USD']];
-            logs.forEach((l,i) => rows.push([logs.length-i, l.ts, `"${l.product}"`, l.code, l.origUSD, l.discUSD, l.savings.toFixed(2)]));
-            const csv = rows.map(r=>r.join(',')).join('\n');
-            const a = document.createElement('a');
-            a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
-            a.download = `mobiledirect_referrals_${new Date().toISOString().slice(0,10)}.csv`;
-            a.click();
-        }
-
-        // ── Product data ──────────────────────────────────────────────────
         const products = [
             { 
                 id: 100, type: 'phones', name: "Samsung Galaxy S26 Ultra", brand: "Samsung", price: 1999, tag: "Only 3 Left",
@@ -787,7 +521,6 @@
             const p = products.find(prod => prod.id === id);
             if (!p) return;
             currentProduct = p;
-            activeCode = null;
 
             const ronPrice = Math.round(p.price * RON_RATE);
 
@@ -796,13 +529,6 @@
             document.getElementById('modal-price').innerText = `$${p.price.toLocaleString()}`;
             document.getElementById('modal-price-ron').innerText = `≈ ${ronPrice.toLocaleString()} RON`;
             document.getElementById('modal-desc').innerHTML = p.description.map(d => `<p>${d}</p>`).join('');
-
-            // Reset referral field
-            const refInput = document.getElementById('modal-ref-input');
-            refInput.value = '';
-            refInput.classList.remove('valid','invalid');
-            document.getElementById('modal-ref-badge').style.display = 'none';
-            document.getElementById('modal-discount-line').style.display = 'none';
 
             const colorCont = document.getElementById('modal-color-swatches');
             colorCont.innerHTML = (p.colors || []).map(c => `<div class="w-4 h-4 rounded-full border border-white/20" style="background-color: ${c}"></div>`).join('');
@@ -825,7 +551,7 @@
                 if(img) img.src = p.images?.[i-1] || "https://placehold.co/100x100/111/444";
             }
 
-            // Construct secure PHP URL (no discount yet)
+            // Construct secure PHP URL
             document.getElementById('buy-now-link').href = `${PHP_GATEWAY_URL}?amount=${p.amountCents}&product=${encodeURIComponent(p.name)}`;
 
             modal.classList.remove('hidden-modal');
