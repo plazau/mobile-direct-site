@@ -178,7 +178,7 @@
                     <span class="gradient-text">Direct</span>
                 </h1>
                 <p class="text-lg md:text-xl text-gray-400 max-w-xl leading-relaxed font-medium">
-                    The World’s Market. Without Borders. Since 2019.
+                    The World’s Market. Without Borders. Since 2019. All of our devices are shipped from Europe to the USA.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4">
                     <a href="#products" class="px-10 py-5 bg-white text-black rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-cyan-500 transition-all text-center shadow-xl">Explore Inventory</a>
@@ -204,8 +204,9 @@
                 <div class="flex flex-wrap justify-center gap-3 pt-12" id="filter-tabs">
                     <button data-cat="all" class="filter-btn px-8 py-3 rounded-2xl text-[10px] uppercase tracking-widest font-black bg-cyan-500 text-black shadow-lg">All</button>
                     <button data-cat="phones" class="filter-btn px-8 py-3 rounded-2xl text-[10px] uppercase tracking-widest font-black bg-white/5 border border-white/10 text-gray-400 hover:bg-white/10">Flagships</button>
+                    <button data-cat="drones" class="filter-btn px-8 py-3 rounded-2xl text-[10px] uppercase tracking-widest font-black bg-white/5 border border-white/10 text-gray-400 hover:bg-white/10">Drones</button>
+                    <button data-cat="services" class="filter-btn px-8 py-3 rounded-2xl text-[10px] uppercase tracking-widest font-black bg-white/5 border border-white/10 text-gray-400 hover:bg-white/10">APIs & Services</button>
                     <button data-cat="watches" class="filter-btn px-8 py-3 rounded-2xl text-[10px] uppercase tracking-widest font-black bg-white/5 border border-white/10 text-gray-400 hover:bg-white/10">Wearables</button>
-                    <button data-cat="tablets" class="filter-btn px-8 py-3 rounded-2xl text-[10px] uppercase tracking-widest font-black bg-white/5 border border-white/10 text-gray-400 hover:bg-white/10">Tablets</button>
                 </div>
             </div>
 
@@ -244,7 +245,7 @@
         <div class="absolute inset-0 bg-black/98 backdrop-blur-2xl" onclick="closeModal()"></div>
         <div class="relative glass-card max-w-6xl w-full max-h-[95vh] overflow-y-auto grid lg:grid-cols-2 shadow-2xl border-white/10" onclick="event.stopPropagation()">
             <button class="absolute top-8 right-8 z-20 p-3 bg-white/5 rounded-full hover:bg-white/10 transition-colors border border-white/5 text-white" onclick="closeModal()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" x2="6" x2="6" y2="18"/><line x1="6" x2="6" x2="18" y2="18"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
             
             <div class="p-12 bg-white/[0.01] flex flex-col items-center justify-center border-r border-white/5 h-full min-h-[450px]">
@@ -366,6 +367,38 @@
               images: ["img/samtri1.jpg", "img/samtri2.jpg", "img/samtri3.jpg"],
               description: ["Samsung’s first-ever tri-fold flagship transforms into a 10.0-inch tablet via a dual-hinge design."],
               detailed: { "Processor": "Snapdragon 8 Elite", "Memory": "16GB", "Display": "10.0\" AMOLED", "Status": "Verified Hub Stock" }
+            },
+            {
+                id: 200, type: 'drones', name: "DJI Avata 360 Fly More Combo", brand: "DJI", price: 875, tag: "FPV Powerhouse",
+                amountCents: 87500,
+                colors: ["#2d3436"],
+                images: ["img/avata1.jpg", "avata2.jpg", "img/avata3.jpg"],
+                description: ["All-in-one FPV experience. Includes DJI Goggles 3 and RC Motion 3.", "Immersive flight with 4K/60fps HDR ultra-wide imaging.", "Up to 23 mins flight time with enhanced safety features."],
+                detailed: { "Sensor": "1/1.3-inch CMOS", "Video": "4K/60fps HDR", "Transmission": "DJI O4 (13km)", "Flight Time": "23 Minutes" }
+            },
+            {
+                id: 201, type: 'drones', name: "DJI Lito X1 Fly More Combo", brand: "DJI", price: 450, tag: "Compact & Smart",
+                amountCents: 45000,
+                colors: ["#ecf0f1"],
+                images: ["img/dji1.jpg", "img/dji2.jpg", "img/dji3.jp           g"],
+                description: ["The ultimate vlog drone. Palm takeoff and landing with AI Subject Tracking.", "Lightweight at just 135g. No remote required for basic flight.", "Includes DJI RC-N3 and three Intelligent Flight Batteries."],
+                detailed: { "Weight": "135g", "Video": "4K Ultra HD", "Tracking": "AI Subject Tracking", "Control": "App/Voice/Remote" }
+            },
+            {
+                id: 300, type: 'services', name: "Claude API Unlimited", brand: "Anthropic", price: 425, tag: "Unlimited Tokens",
+                amountCents: 42500,
+                colors: ["#d57e5f"],
+                images: ["https://placehold.co/800x600/222/d57e5f?text=Claude+API+Unlimited"],
+                description: ["Non-commercial unlimited access to Claude 3.5 Sonnet & Opus models.", "Premium high-throughput access via enterprise-grade proxy.", "No monthly cap. Guaranteed 99.9% uptime."],
+                detailed: { "Tier": "Enterprise Proxy", "Usage": "Unlimited (Non-Commercial)", "Models": "3.5 Sonnet / Opus", "Integration": "REST / Webhook" }
+            },
+            {
+                id: 301, type: 'services', name: "Gemini API Unlimited", brand: "Google", price: 375, tag: "Unlimited Tokens",
+                amountCents: 37500,
+                colors: ["#4285F4"],
+                images: ["https://placehold.co/800x600/222/4285F4?text=Gemini+API+Unlimited"],
+                description: ["Global unlimited access to Gemini 1.5 Pro and Flash models.", "High-speed processing for large context windows up to 2M tokens.", "Secure non-commercial license for developers and creators."],
+                detailed: { "Tier": "Unlimited Pro", "Context": "2 Million Tokens", "Models": "Gemini 1.5 Pro/Flash", "Usage": "Non-Commercial" }
             },
             {
               id: 5,
@@ -492,6 +525,7 @@
                             <div class="flex gap-2 mb-4">
                                 ${p.detailed.Memory ? `<span class="px-2 py-1 bg-white/5 border border-white/10 rounded-lg text-[8px] font-bold text-gray-400 uppercase tracking-widest">${p.detailed.Memory.split(' ')[0]}</span>` : ''}
                                 ${p.detailed.Storage ? `<span class="px-2 py-1 bg-white/5 border border-white/10 rounded-lg text-[8px] font-bold text-gray-400 uppercase tracking-widest">${p.detailed.Storage.split(' ')[0]}</span>` : ''}
+                                ${p.detailed.Models ? `<span class="px-2 py-1 bg-white/5 border border-white/10 rounded-lg text-[8px] font-bold text-gray-400 uppercase tracking-widest">API</span>` : ''}
                             </div>
                         </div>
                         <div class="flex items-center justify-between pt-5 border-t border-white/5">
